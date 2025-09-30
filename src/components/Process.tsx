@@ -28,67 +28,56 @@ const steps = [
 
 export const Process = () => {
   return (
-    <section id="process" className="py-20 bg-card/30 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-card/50 pointer-events-none" />
-      
-      <div className="container px-4 sm:px-6 lg:px-8 mx-auto relative z-10">
+    <section id="process" className="py-24 px-4 relative overflow-hidden" style={{ background: '#0A1025' }}>
+      <div className="container mx-auto max-w-7xl relative z-10">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-16 space-y-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.3 }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            <span className="gradient-text">Comment ça marche ?</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold">
+            <span className="bg-gradient-to-r from-cyan via-violet to-indigo bg-clip-text text-transparent">
+              Comment ça marche ?
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Un process simple et efficace en 3 étapes pour transformer votre idée en réalité
+          <p className="text-xl text-accentlight/80 max-w-2xl mx-auto">
+            Un processus simple et efficace en 3 étapes pour transformer votre idée en réalité
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
             >
-              <Card 
-                className="relative overflow-hidden glass border-border/50 hover:border-primary/30 transition-all group h-full hover-glow"
-              >
+              <Card className="relative overflow-hidden glass-card border-indigo/30 h-full">
                 <CardContent className="p-8">
                   {/* Step Number Badge */}
-                  <motion.div 
-                    className="absolute top-4 right-4 w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center glow-blue"
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <span className="text-2xl font-bold gradient-text">{index + 1}</span>
-                  </motion.div>
+                  <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-gradient-to-br from-cyan/20 to-violet/20 flex items-center justify-center shadow-glow">
+                    <span className="text-2xl font-bold bg-gradient-to-r from-cyan to-indigo bg-clip-text text-transparent">{index + 1}</span>
+                  </div>
 
                   {/* Icon/Image */}
-                  <motion.div 
-                    className="mb-6 relative"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
+                  <div className="mb-6 relative">
                     <img 
                       src={step.image} 
                       alt={step.title}
                       className="w-24 h-24 mx-auto object-contain"
                     />
-                  </motion.div>
+                  </div>
 
                   {/* Content */}
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">
+                  <h3 className="text-xl font-bold mb-3 text-accentlight">
                     {step.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-accentlight/70 leading-relaxed">
                     {step.description}
                   </p>
                 </CardContent>

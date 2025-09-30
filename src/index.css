@@ -8,57 +8,55 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark mode premium - Electro/Néon theme */
-    --background: 222 56% 6%;  /* #0B0F19 noir bleuté */
-    --foreground: 214 32% 78%;  /* #A3B1C6 muted text */
+    /* Electric Midnight Premium 2025 */
+    --background: 226 72% 10%;  /* #0A1025 nuit profonde */
+    --foreground: 220 60% 93%;  /* #E8EFFF accent clair */
 
-    --card: 223 48% 8%;  /* #101526 surface card */
-    --card-foreground: 214 32% 78%;
+    --card: 228 43% 15%;  /* #141934 surface */
+    --card-foreground: 220 60% 93%;
 
-    --popover: 223 47% 9%;  /* #0F1424 surface */
-    --popover-foreground: 214 32% 78%;
+    --popover: 228 43% 15%;
+    --popover-foreground: 220 60% 93%;
 
-    --primary: 221 100% 68%;  /* #5B8CFF bleu néon */
+    --primary: 240 100% 64%;  /* #4B49FF indigo néon */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 221 100% 63%;  /* #4C7DFF ring/glow */
 
-    --secondary: 265 100% 68%;  /* #9B5BFF violet */
+    --secondary: 272 100% 59%;  /* #962FFF violet électrique */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 214 32% 78%;  /* #A3B1C6 */
-    --muted-foreground: 214 20% 60%;
+    --muted: 220 60% 93%;  /* #E8EFFF */
+    --muted-foreground: 220 20% 65%;
 
-    --accent: 189 100% 50%;  /* #00E6FF cyan */
-    --accent-foreground: 222 56% 6%;
+    --accent: 186 100% 56%;  /* #21F0FF cyan lumineux */
+    --accent-foreground: 226 72% 10%;
 
-    --warning: 38 100% 65%;  /* #FFC44D */
-    --warning-foreground: 222 56% 6%;
+    --salmon: 6 100% 69%;  /* #FF6F61 */
+    --gold: 36 100% 73%;  /* #FFC27A */
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 227 48% 14%;  /* #1E2742 */
-    --input: 227 48% 14%;
-    --ring: 221 100% 63%;  /* #4C7DFF44 glow */
+    --border: 228 43% 20%;
+    --input: 228 43% 15%;
+    --ring: 186 100% 56%;  /* cyan */
 
-    --radius: 1.5rem;
+    --radius: 1.25rem;
 
-    /* Gradients néon */
-    --gradient-primary: linear-gradient(135deg, #5B8CFF 0%, #9B5BFF 50%, #00E6FF 100%);
-    --gradient-hero: linear-gradient(180deg, #111827 0%, #0B0F19 50%, #0B0F19 100%);
-    --gradient-card: linear-gradient(135deg, rgba(91, 140, 255, 0.05) 0%, rgba(155, 91, 255, 0.05) 100%);
+    /* Gradients Electric Midnight */
+    --gradient-hero: radial-gradient(ellipse 120% 80% at 50% 35%, #21F0FF 0%, #962FFF 40%, #0A1025 100%);
+    --gradient-surface: linear-gradient(135deg, #141934 30%, #4B49FF 120%);
+    --gradient-primary: linear-gradient(135deg, #4B49FF 0%, #21F0FF 50%, #962FFF 100%);
+    --gradient-accent: linear-gradient(to right, #FF6F61 0%, #FFC27A 50%, #21F0FF 100%);
+    --gradient-popular: linear-gradient(to right, #962FFF 0%, #21F0FF 100%);
     
-    /* Shadows néon */
-    --shadow-glow: 0 0 40px rgba(76, 125, 255, 0.4);
-    --shadow-glow-strong: 0 0 60px rgba(91, 140, 255, 0.6), 0 0 100px rgba(155, 91, 255, 0.3);
-    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
-    --shadow-neon-blue: 0 0 20px rgba(91, 140, 255, 0.5);
-    --shadow-neon-purple: 0 0 20px rgba(155, 91, 255, 0.5);
-    --shadow-neon-cyan: 0 0 20px rgba(0, 230, 255, 0.5);
+    /* Shadows & Glow */
+    --shadow-neon: 0 0 8px 2px rgba(75, 73, 255, 0.47);
+    --shadow-glass: 0 2px 16px 0 rgba(33, 240, 255, 0.09);
+    --shadow-glow: 0 0 16px rgba(150, 47, 255, 0.4);
+    --shadow-glow-strong: 0 0 25px 4px rgba(150, 47, 255, 0.73);
     
     /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-spring: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -79,13 +77,15 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  /* Glassmorphism */
-  .glass {
-    @apply bg-card/60 backdrop-blur-md border border-border/50;
+  /* Glassmorphism Electric Midnight */
+  .glass-card {
+    @apply bg-card/85 backdrop-blur-md border border-white/10 rounded-2xl transition-all duration-200;
+    box-shadow: var(--shadow-glass);
   }
 
-  .glass-strong {
-    @apply bg-card/80 backdrop-blur-lg border border-border;
+  .glass-card:hover {
+    @apply -translate-y-2;
+    box-shadow: var(--shadow-neon);
   }
 
   /* Gradient text */
@@ -94,40 +94,37 @@ All colors MUST be HSL.
     background-image: var(--gradient-primary);
   }
 
-  /* Neon glow effects */
-  .glow-blue {
-    box-shadow: var(--shadow-neon-blue);
+  .gradient-accent-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
   }
 
-  .glow-purple {
-    box-shadow: var(--shadow-neon-purple);
+  /* Noise overlay */
+  .noise-overlay {
+    position: relative;
   }
 
-  .glow-cyan {
-    box-shadow: var(--shadow-neon-cyan);
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
   }
 
-  /* Hover glow */
-  .hover-glow {
-    transition: var(--transition-smooth);
+  /* Halo glow */
+  .halo-glow {
+    position: relative;
   }
 
-  .hover-glow:hover {
-    box-shadow: var(--shadow-glow);
-  }
-
-  /* Animated gradient background */
-  @keyframes gradient-shift {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient-shift 8s ease infinite;
+  .halo-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(33, 240, 255, 0.3) 0%, transparent 70%);
+    filter: blur(60px);
+    z-index: -1;
+    animation: pulseGlow 2s infinite;
   }
 }

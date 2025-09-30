@@ -43,77 +43,74 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="py-20 bg-card/30 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-card/50 pointer-events-none" />
+    <section id="faq" className="py-24 px-4 relative overflow-hidden bg-midnight">
+      <div className="container mx-auto max-w-4xl relative z-10">
+        {/* Header */}
+        <motion.div 
+          className="text-center mb-12 space-y-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3 }}
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold">
+            <span className="bg-gradient-to-r from-violet via-cyan to-indigo bg-clip-text text-transparent">
+              Questions Fréquentes
+            </span>
+          </h2>
+          <p className="text-xl text-accentlight/80">
+            Tout ce que vous devez savoir sur nos services
+          </p>
+        </motion.div>
 
-      <div className="container px-4 sm:px-6 lg:px-8 mx-auto relative z-10">
-        <div className="max-w-3xl mx-auto">
-          {/* Header */}
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="gradient-text">Questions Fréquentes</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Tout ce que vous devez savoir sur nos services
-            </p>
-          </motion.div>
+        {/* FAQ Accordion */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, delay: 0.1 }}
+        >
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`}
+                className="glass-card border-indigo/30 px-6 hover:border-cyan/40 transition-all"
+              >
+                <AccordionTrigger className="text-left font-semibold text-accentlight hover:text-cyan">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-accentlight/70 leading-relaxed pt-2">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
 
-          {/* FAQ Accordion */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+        {/* CTA */}
+        <motion.div 
+          className="text-center mt-12 p-6 rounded-2xl glass-card border-cyan/30"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+        >
+          <p className="text-accentlight/70 mb-4">
+            Vous avez une autre question ?
+          </p>
+          <a 
+            href="#contact" 
+            className="text-cyan font-bold hover:text-violet transition-colors inline-flex items-center gap-2"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+            }}
           >
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {faqs.map((faq, index) => (
-                <AccordionItem 
-                  key={index} 
-                  value={`item-${index}`}
-                  className="border border-border/50 rounded-lg px-6 glass hover:border-primary/30 transition-all"
-                >
-                  <AccordionTrigger className="text-left font-semibold hover:text-primary">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pt-2">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </motion.div>
-
-          {/* CTA */}
-          <motion.div 
-            className="text-center mt-12 p-6 rounded-lg glass border border-border/50 hover:border-accent/30 transition-all"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <p className="text-muted-foreground mb-4">
-              Vous avez une autre question ?
-            </p>
-            <a 
-              href="#contact" 
-              className="text-primary font-medium hover:text-accent transition-colors inline-flex items-center gap-2"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Contactez-nous directement 
-              <span className="inline-block group-hover:translate-x-1 transition-transform">→</span>
-            </a>
-          </motion.div>
-        </div>
+            Contactez-nous directement 
+            <span className="inline-block group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </motion.div>
       </div>
     </section>
   );

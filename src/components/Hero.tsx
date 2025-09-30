@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Zap, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   const scrollToContact = () => {
@@ -90,13 +91,14 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.3 }}
           >
-            <Button
-              size="lg"
-              onClick={scrollToContact}
-              className="text-xl font-semibold px-8 py-6 bg-gradient-to-r from-indigo via-cyan to-violet rounded-2xl shadow-neon hover:brightness-125 focus:ring-4 focus:ring-cyan/70 transition-all duration-200"
-            >
-              Réserver un créneau
-            </Button>
+            <Link to="/reserver">
+              <Button
+                size="lg"
+                className="text-xl font-semibold px-8 py-6 bg-gradient-to-r from-indigo via-cyan to-violet rounded-2xl shadow-neon text-white transition-all duration-150 hover:from-cyan hover:via-indigo hover:to-salmon hover:brightness-125 hover:shadow-glow hover:scale-105 focus:ring-4 focus:ring-cyan/70"
+              >
+                Réserver un créneau
+              </Button>
+            </Link>
             <Button
               size="lg"
               variant="outline"

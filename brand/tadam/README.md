@@ -136,12 +136,19 @@
 
 ## Export des Assets
 
-Tous les assets sont disponibles dans le dossier `public/`:
-- `logo-tadam-wordmark.png` (1920×512px)
+### Dossier `public/` (assets web)
+- `logo-tadam-wordmark.png` (1920×512px, dark version)
 - `icon-512.png` (512×512px)
 - `favicon.png` (512×512px, optimisé pour petites tailles)
 - `apple-touch-icon.png` (512×512px, safe area incluse)
 - `og-image.png` (1200×630px)
+
+### Dossier `brand/tadam/` (variantes complètes)
+- `logo_tadam_wordmark_light@2048.png` (pour fonds clairs)
+- `logo_tadam_wordmark_mono_black@1024.png` (print, noir)
+- `logo_tadam_wordmark_mono_white@1024.png` (print, blanc)
+- `social-1080x1080.png` (Instagram, carré)
+- `social-1920x1080.png` (YouTube/Twitter header)
 
 ---
 

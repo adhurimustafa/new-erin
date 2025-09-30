@@ -9,7 +9,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20 pt-32">
       {/* Radial gradient background with mesh */}
       <div 
         className="absolute inset-0 z-0 noise-overlay bg-gradient-radial"

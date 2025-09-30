@@ -52,12 +52,12 @@ export const Hero = () => {
                   filter: 'drop-shadow(0 0 30px rgba(33, 240, 255, 0.5))',
                 }}
               >
-                48–72 heures,
+                Votre site web
                 <br />
-                site finalisé
+                en ligne en 4h
               </span>
               <span className="block mt-4 text-xl md:text-2xl font-medium bg-gradient-to-r from-salmon via-gold to-cyan bg-clip-text text-transparent">
-                De l'idée à votre marque en ligne, sans stress
+                En 4 heures, votre projet prend vie. Finalisé en 48-72h max.
               </span>
             </h1>
           </motion.div>
@@ -69,7 +69,7 @@ export const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.3 }}
           >
-            Landing page optimisée, domaine personnalisé et publication garantie.
+            Première version visible dès 4 heures. Site complet, domaine personnalisé et publication garantie sous 48-72h.
             Parfait pour entrepreneurs et créateurs qui veulent lancer vite.
           </motion.p>
 

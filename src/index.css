@@ -8,55 +8,61 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Electric Midnight Premium 2025 */
-    --background: 226 72% 10%;  /* #0A1025 nuit profonde */
-    --foreground: 220 60% 93%;  /* #E8EFFF accent clair */
+    /* Tadam! Dark Premium Palette */
+    --background: 222 42% 8%;  /* #0B0F19 nuit */
+    --foreground: 210 20% 96%;  /* #F3F4F6 ivoire */
 
-    --card: 228 43% 15%;  /* #141934 surface */
-    --card-foreground: 220 60% 93%;
+    --card: 222 35% 12%;  /* surface sombre */
+    --card-foreground: 210 20% 96%;
 
-    --popover: 228 43% 15%;
-    --popover-foreground: 220 60% 93%;
+    --popover: 222 35% 12%;
+    --popover-foreground: 210 20% 96%;
 
-    --primary: 240 100% 64%;  /* #4B49FF indigo néon */
-    --primary-foreground: 0 0% 100%;
+    --primary: 185 100% 50%;  /* #00E6FF cyan */
+    --primary-foreground: 222 42% 8%;
 
-    --secondary: 272 100% 59%;  /* #962FFF violet électrique */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 222 70% 65%;  /* #5B8CFF indigo */
+    --secondary-foreground: 222 42% 8%;
 
-    --muted: 220 60% 93%;  /* #E8EFFF */
-    --muted-foreground: 220 20% 65%;
+    --muted: 222 30% 18%;
+    --muted-foreground: 217 20% 65%;
 
-    --accent: 186 100% 56%;  /* #21F0FF cyan lumineux */
-    --accent-foreground: 226 72% 10%;
+    --accent: 263 70% 65%;  /* #9B5BFF violet */
+    --accent-foreground: 222 42% 8%;
 
-    --salmon: 6 100% 69%;  /* #FF6F61 */
-    --gold: 36 100% 73%;  /* #FFC27A */
+    --accentlight: 210 20% 90%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 228 43% 20%;
-    --input: 228 43% 15%;
-    --ring: 186 100% 56%;  /* cyan */
+    --border: 222 30% 20%;
+    --input: 222 30% 18%;
+    --ring: 185 100% 50%;
 
-    --radius: 1.25rem;
+    --radius: 2rem;
 
-    /* Gradients Electric Midnight */
-    --gradient-hero: radial-gradient(ellipse 120% 80% at 50% 35%, #21F0FF 0%, #962FFF 40%, #0A1025 100%);
-    --gradient-surface: linear-gradient(135deg, #141934 30%, #4B49FF 120%);
-    --gradient-primary: linear-gradient(135deg, #4B49FF 0%, #21F0FF 50%, #962FFF 100%);
-    --gradient-accent: linear-gradient(to right, #FF6F61 0%, #FFC27A 50%, #21F0FF 100%);
-    --gradient-popular: linear-gradient(to right, #962FFF 0%, #21F0FF 100%);
-    
-    /* Shadows & Glow */
-    --shadow-neon: 0 0 8px 2px rgba(75, 73, 255, 0.47);
-    --shadow-glass: 0 2px 16px 0 rgba(33, 240, 255, 0.09);
-    --shadow-glow: 0 0 16px rgba(150, 47, 255, 0.4);
-    --shadow-glow-strong: 0 0 25px 4px rgba(150, 47, 255, 0.73);
-    
-    /* Transitions */
-    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Tadam! Brand Colors */
+    --midnight: 222 42% 8%;  /* #0B0F19 */
+    --cyan: 185 100% 50%;  /* #00E6FF */
+    --indigo: 222 70% 65%;  /* #5B8CFF */
+    --violet: 263 70% 65%;  /* #9B5BFF */
+    --ivory: 210 20% 96%;  /* #F3F4F6 */
+
+    /* Gradients Tadam! */
+    --gradient-tadam: linear-gradient(135deg, hsl(var(--cyan)), hsl(var(--indigo)), hsl(var(--violet)));
+    --gradient-radial: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(var(--cyan) / 0.2), hsl(var(--midnight)));
+
+    /* Effects */
+    --shadow-glow: 0 0 40px hsl(var(--cyan) / 0.3), 0 0 80px hsl(var(--indigo) / 0.2);
+    --shadow-card: 0 4px 24px hsl(var(--midnight) / 0.8);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Chart colors */
+    --chart-1: 185 100% 50%;
+    --chart-2: 222 70% 65%;
+    --chart-3: 263 70% 65%;
+    --chart-4: 210 20% 96%;
+    --chart-5: 0 84% 60%;
   }
 }
 
@@ -67,64 +73,60 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Inter', 'Manrope', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Sora', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Poppins', 'Sora', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
     letter-spacing: -0.02em;
   }
 }
 
 @layer utilities {
-  /* Glassmorphism Electric Midnight */
+  /* Tadam! Glassmorphism */
   .glass-card {
-    @apply bg-card/85 backdrop-blur-md border border-white/10 rounded-2xl transition-all duration-200;
-    box-shadow: var(--shadow-glass);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+    transition: var(--transition-smooth);
   }
 
   .glass-card:hover {
-    @apply -translate-y-2;
-    box-shadow: var(--shadow-neon);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: hsl(var(--cyan) / 0.3);
+    box-shadow: var(--shadow-glow);
   }
 
-  /* Gradient text */
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-primary);
+  /* Gradient text Tadam! */
+  .gradient-tadam {
+    background: var(--gradient-tadam);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  .gradient-accent-text {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-accent);
+  .bg-gradient-tadam {
+    background: var(--gradient-tadam);
+  }
+
+  .bg-gradient-radial {
+    background: var(--gradient-radial);
   }
 
   /* Noise overlay */
-  .noise-overlay {
-    position: relative;
-  }
-
   .noise-overlay::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.3'/%3E%3C/svg%3E");
     pointer-events: none;
-    z-index: 1;
   }
 
-  /* Halo glow */
-  .halo-glow {
-    position: relative;
-  }
-
-  .halo-glow::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle, rgba(33, 240, 255, 0.3) 0%, transparent 70%);
-    filter: blur(60px);
-    z-index: -1;
-    animation: pulseGlow 2s infinite;
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--cyan) / 0.5);
   }
 }

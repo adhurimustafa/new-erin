@@ -10,13 +10,9 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20">
-      {/* Gradient background with mesh animation */}
+      {/* Radial gradient background with mesh */}
       <div 
-        className="absolute inset-0 z-0 noise-overlay animate-mesh"
-        style={{
-          background: 'radial-gradient(ellipse 120% 80% at 50% 35%, #21F0FF 0%, #962FFF 40%, #0A1025 100%)',
-          backgroundSize: '200% 200%',
-        }}
+        className="absolute inset-0 z-0 noise-overlay bg-gradient-radial"
       />
 
       {/* Content */}
@@ -29,48 +25,45 @@ export const Hero = () => {
         >
           {/* Badge */}
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-cyan/30 animate-pulseGlow"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card border border-cyan/30"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1, duration: 0.3 }}
           >
             <Zap className="w-4 h-4 text-cyan" fill="currentColor" />
-            <span className="text-sm font-bold text-accentlight">Option Express 4-8h déjà prête</span>
+            <span className="text-sm font-semibold text-cyan">Option Express 4–8h</span>
           </motion.div>
 
-          {/* Main heading with gradient text and halo */}
+          {/* Main heading with gradient text */}
           <motion.div
-            className="relative halo-glow"
+            className="relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.3 }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight">
-              <span 
-                className="bg-gradient-to-br from-cyan via-indigo to-violet bg-clip-text text-transparent"
-                style={{ 
-                  filter: 'drop-shadow(0 0 30px rgba(33, 240, 255, 0.5))',
-                }}
-              >
-                Votre site web
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight font-heading">
+              <span className="gradient-tadam text-glow">
+                Brief → Tadam →
                 <br />
-                en ligne en 4h
+                en ligne
               </span>
-              <span className="block mt-4 text-xl md:text-2xl font-medium bg-gradient-to-r from-salmon via-gold to-cyan bg-clip-text text-transparent">
-                En 4 heures, votre projet prend vie. Finalisé en 48-72h max.
+              <span className="block mt-6 text-xl md:text-3xl font-medium text-ivory/90">
+                Votre site clair, mobile et prêt à convertir
+                <br />
+                <span className="text-cyan">en 4–8h</span> <span className="text-muted-foreground">(ou 48–72h)</span>
               </span>
             </h1>
           </motion.div>
 
           {/* Subtitle */}
           <motion.p
-            className="text-lg md:text-xl text-accentlight/80 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.3 }}
           >
-            Première version visible dès 4 heures. Site complet, domaine personnalisé et publication garantie sous 48-72h.
-            Parfait pour entrepreneurs et créateurs qui veulent lancer vite.
+            Première version visible dès 4 heures. Site complet, domaine personnalisé et publication garantie.
+            <span className="block mt-2 text-ivory/80">Parfait pour entrepreneurs et créateurs qui veulent lancer vite.</span>
           </motion.p>
 
           {/* Location indicator */}
@@ -94,7 +87,7 @@ export const Hero = () => {
             <Link to="/reserver">
               <Button
                 size="lg"
-                className="text-xl font-semibold px-8 py-6 bg-gradient-to-r from-indigo via-cyan to-violet rounded-2xl shadow-neon text-white transition-all duration-150 hover:from-cyan hover:via-indigo hover:to-salmon hover:brightness-125 hover:shadow-glow hover:scale-105 focus:ring-4 focus:ring-cyan/70"
+                className="text-lg font-semibold px-10 py-7 bg-gradient-tadam rounded-2xl text-midnight transition-all duration-300 hover:shadow-glow hover:scale-105 focus:ring-4 focus:ring-cyan/50"
               >
                 Réserver un créneau
               </Button>
@@ -106,7 +99,7 @@ export const Hero = () => {
                 const pricingSection = document.getElementById('pricing');
                 pricingSection?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="text-xl font-semibold px-8 py-6 border-2 border-cyan/50 bg-transparent text-accentlight hover:bg-cyan/10 hover:border-cyan rounded-2xl transition-all duration-200"
+              className="text-lg font-semibold px-10 py-7 border-2 border-cyan/40 bg-transparent text-ivory hover:bg-cyan/10 hover:border-cyan rounded-2xl transition-all duration-300"
             >
               Voir les forfaits
             </Button>
@@ -114,32 +107,32 @@ export const Hero = () => {
 
           {/* Trust indicators */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-6 pt-8 text-sm text-accentlight/70"
+            className="flex flex-wrap items-center justify-center gap-8 pt-8 text-sm text-muted-foreground"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.3 }}
           >
             <div className="flex items-center gap-2">
               <motion.div
-                className="w-2 h-2 rounded-full bg-cyan shadow-glow"
-                animate={{ scale: [1, 1.3, 1] }}
+                className="w-2 h-2 rounded-full bg-cyan"
+                animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
               <span className="font-medium">Livraison garantie</span>
             </div>
             <div className="flex items-center gap-2">
               <motion.div
-                className="w-2 h-2 rounded-full bg-violet shadow-glow"
-                animate={{ scale: [1, 1.3, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                className="w-2 h-2 rounded-full bg-indigo"
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.7 }}
               />
               <span className="font-medium">Paiement sécurisé</span>
             </div>
             <div className="flex items-center gap-2">
               <motion.div
-                className="w-2 h-2 rounded-full bg-indigo shadow-glow"
-                animate={{ scale: [1, 1.3, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                className="w-2 h-2 rounded-full bg-violet"
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1.4 }}
               />
               <span className="font-medium">Support inclus</span>
             </div>

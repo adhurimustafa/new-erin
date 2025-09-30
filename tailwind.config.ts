@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "Manrope", "system-ui", "sans-serif"],
+        heading: ["Poppins", "Sora", "system-ui", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -39,6 +43,7 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        accentlight: "hsl(var(--accentlight))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -57,18 +62,22 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        midnight: "#0A1025",
-        indigo: "#4B49FF",
-        violet: "#962FFF",
-        cyan: "#21F0FF",
-        salmon: "#FF6F61",
-        gold: "#FFC27A",
-        accentlight: "#E8EFFF",
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
+        },
+        midnight: "hsl(var(--midnight))",
+        indigo: "hsl(var(--indigo))",
+        violet: "hsl(var(--violet))",
+        cyan: "hsl(var(--cyan))",
+        ivory: "hsl(var(--ivory))",
       },
       boxShadow: {
-        neon: "0 0 8px 2px rgba(75, 73, 255, 0.47)",
-        glass: "0 2px 16px 0 rgba(33, 240, 255, 0.09)",
-        glow: "0 0 16px rgba(150, 47, 255, 0.4)",
+        glow: "0 0 40px hsl(var(--cyan) / 0.3), 0 0 80px hsl(var(--indigo) / 0.2)",
+        card: "0 4px 24px hsl(var(--midnight) / 0.8)",
       },
       borderRadius: {
         lg: "var(--radius)",

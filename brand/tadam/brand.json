@@ -1,0 +1,61 @@
+{
+  "name": "Tadam!",
+  "tagline": "Brief → Tadam → en ligne",
+  "description": "Votre site clair, mobile et prêt à convertir — en 4–8h (ou 48–72h)",
+  "colors": {
+    "bg": "#0B0F19",
+    "cyan": "#00E6FF",
+    "indigo": "#5B8CFF",
+    "violet": "#9B5BFF",
+    "ivory": "#F3F4F6"
+  },
+  "colorsHSL": {
+    "midnight": "222 42% 8%",
+    "cyan": "185 100% 50%",
+    "indigo": "222 70% 65%",
+    "violet": "263 70% 65%",
+    "ivory": "210 20% 96%"
+  },
+  "fonts": {
+    "title": "Poppins|Sora",
+    "titleWeights": [400, 600, 700],
+    "text": "Inter|Manrope",
+    "textWeights": [400, 500, 600]
+  },
+  "gradients": {
+    "tadam": "linear-gradient(135deg, #00E6FF, #5B8CFF, #9B5BFF)",
+    "radial": "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 230, 255, 0.2), #0B0F19)"
+  },
+  "effects": {
+    "shadowGlow": "0 0 40px hsl(185 100% 50% / 0.3), 0 0 80px hsl(222 70% 65% / 0.2)",
+    "textGlow": "0 0 20px hsl(185 100% 50% / 0.5)",
+    "transition": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+  },
+  "borderRadius": {
+    "default": "2rem",
+    "large": "1.5rem",
+    "medium": "1rem",
+    "small": "0.5rem"
+  },
+  "glassmorphism": {
+    "background": "rgba(255, 255, 255, 0.02)",
+    "backdropFilter": "blur(20px)",
+    "border": "1px solid rgba(255, 255, 255, 0.08)"
+  },
+  "accessibility": {
+    "minContrast": "AA",
+    "minTouchTarget": "44px",
+    "focusRingColor": "#00E6FF"
+  },
+  "assets": {
+    "wordmark": "/logo-tadam-wordmark.png",
+    "icon512": "/icon-512.png",
+    "favicon": "/favicon.png",
+    "appleTouchIcon": "/apple-touch-icon.png",
+    "ogImage": "/og-image.png"
+  },
+  "domains": {
+    "primary": "tadam.studio",
+    "alternatives": ["tadamstudio.fr", "tadam-enligne.fr"]
+  }
+}

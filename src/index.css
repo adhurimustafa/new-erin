@@ -8,44 +8,52 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Harvey-inspired Professional Palette */
-    --background: 0 0% 3%;  /* Deep black background */
-    --foreground: 0 0% 98%;  /* Pure white text */
+    /* Electric Midnight Premium 2025 */
+    --background: 226 72% 10%;  /* #0A1025 nuit profonde */
+    --foreground: 220 60% 93%;  /* #E8EFFF accent clair */
 
-    --card: 0 0% 8%;  /* Very dark gray cards */
-    --card-foreground: 0 0% 98%;
+    --card: 228 43% 15%;  /* #141934 surface */
+    --card-foreground: 220 60% 93%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 228 43% 15%;
+    --popover-foreground: 220 60% 93%;
 
-    --primary: 0 0% 98%;  /* White primary */
-    --primary-foreground: 0 0% 3%;
+    --primary: 240 100% 64%;  /* #4B49FF indigo néon */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 13% 20%;  /* Subtle gray */
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 272 100% 59%;  /* #962FFF violet électrique */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 13% 15%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 220 60% 93%;  /* #E8EFFF */
+    --muted-foreground: 220 20% 65%;
 
-    --accent: 217 91% 60%;  /* Subtle blue accent */
-    --accent-foreground: 0 0% 98%;
+    --accent: 186 100% 56%;  /* #21F0FF cyan lumineux */
+    --accent-foreground: 226 72% 10%;
+
+    --salmon: 6 100% 69%;  /* #FF6F61 */
+    --gold: 36 100% 73%;  /* #FFC27A */
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 0 0% 25%;
+    --border: 228 43% 20%;
+    --input: 228 43% 15%;
+    --ring: 186 100% 56%;  /* cyan */
 
-    --radius: 0.75rem;
+    --radius: 1.25rem;
 
-    /* Subtle shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    /* Gradients Electric Midnight */
+    --gradient-hero: radial-gradient(ellipse 120% 80% at 50% 35%, #21F0FF 0%, #962FFF 40%, #0A1025 100%);
+    --gradient-surface: linear-gradient(135deg, #141934 30%, #4B49FF 120%);
+    --gradient-primary: linear-gradient(135deg, #4B49FF 0%, #21F0FF 50%, #962FFF 100%);
+    --gradient-accent: linear-gradient(to right, #FF6F61 0%, #FFC27A 50%, #21F0FF 100%);
+    --gradient-popular: linear-gradient(to right, #962FFF 0%, #21F0FF 100%);
     
-    /* Subtle glow for interactive elements */
-    --glow-subtle: 0 0 20px rgba(217, 217, 217, 0.1);
+    /* Shadows & Glow */
+    --shadow-neon: 0 0 8px 2px rgba(75, 73, 255, 0.47);
+    --shadow-glass: 0 2px 16px 0 rgba(33, 240, 255, 0.09);
+    --shadow-glow: 0 0 16px rgba(150, 47, 255, 0.4);
+    --shadow-glow-strong: 0 0 25px 4px rgba(150, 47, 255, 0.73);
     
     /* Transitions */
     --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -63,37 +71,60 @@ All colors MUST be HSL.
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Sora', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     letter-spacing: -0.02em;
-    font-weight: 500;
   }
 }
 
 @layer utilities {
-  /* Professional minimal cards */
-  .professional-card {
-    @apply bg-card/50 backdrop-blur-sm border border-border rounded-lg transition-all duration-300;
-    box-shadow: var(--shadow-sm);
+  /* Glassmorphism Electric Midnight */
+  .glass-card {
+    @apply bg-card/85 backdrop-blur-md border border-white/10 rounded-2xl transition-all duration-200;
+    box-shadow: var(--shadow-glass);
   }
 
-  .professional-card:hover {
-    @apply border-border/50;
-    box-shadow: var(--shadow-md);
+  .glass-card:hover {
+    @apply -translate-y-2;
+    box-shadow: var(--shadow-neon);
   }
 
-  /* Smooth fade in */
-  .fade-in {
-    animation: fadeIn 0.6s ease-out;
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .gradient-accent-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  /* Noise overlay */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Halo glow */
+  .halo-glow {
+    position: relative;
+  }
+
+  .halo-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(33, 240, 255, 0.3) 0%, transparent 70%);
+    filter: blur(60px);
+    z-index: -1;
+    animation: pulseGlow 2s infinite;
   }
 }

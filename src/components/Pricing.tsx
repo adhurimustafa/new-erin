@@ -65,7 +65,15 @@ export const Pricing = () => {
   };
 
   return (
-    <section id="pricing" className="py-24 px-4 bg-background">
+    <section id="pricing" className="py-24 px-4 relative overflow-hidden">
+      {/* Background gradient */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          background: 'linear-gradient(135deg, #0A1025 20%, #141934 80%)',
+        }}
+      />
+
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -73,38 +81,47 @@ export const Pricing = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.3 }}
         >
-          <h2 className="text-4xl md:text-5xl font-medium text-foreground">
-            Tarifs transparents
+          <h2 className="text-4xl md:text-5xl font-extrabold">
+            <span className="bg-gradient-to-r from-cyan via-indigo to-violet bg-clip-text text-transparent">
+              Forfaits transparents
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choisissez la formule adaptée à vos besoins
+          <p className="text-xl text-accentlight/80 max-w-2xl mx-auto">
+            Choisissez la formule adaptée à vos besoins. Paiement sécurisé, livraison garantie.
           </p>
         </motion.div>
 
         {/* Express Option Banner */}
         <motion.div
-          className="mb-12 p-6 rounded-lg professional-card max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="mb-12 p-6 rounded-2xl glass-card border-2 border-cyan/40 max-w-4xl mx-auto animate-pulseGlow"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ delay: 0.1, duration: 0.3 }}
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
-                <Zap className="w-6 h-6 text-foreground" />
-              </div>
+              <Zap className="w-8 h-8 text-cyan" fill="currentColor" />
               <div>
-                <h3 className="text-xl font-medium text-foreground">Option Express 4-8h</h3>
-                <p className="text-muted-foreground">Publication le jour même</p>
+                <h3 className="text-xl font-bold text-accentlight">Option Express 4-8h</h3>
+                <p className="text-accentlight/70">Publication le jour même</p>
               </div>
             </div>
             <div className="text-center md:text-right">
-              <p className="text-sm text-muted-foreground">Supplément selon le pack</p>
-              <p className="text-lg font-medium text-foreground">+100€ à +250€</p>
+              <p className="text-sm text-accentlight/70">Supplément selon le pack</p>
+              <p className="text-lg font-bold bg-gradient-to-r from-gold to-salmon bg-clip-text text-transparent">+100€ à +250€</p>
             </div>
+          </div>
+          <div className="mt-4 pt-4 border-t border-white/10 text-sm text-accentlight/70 space-y-2">
+            <p className="flex items-center gap-2">
+              <Clock className="w-4 h-4 text-cyan" />
+              Créneaux : 9h-13h / 14h-20h (Europe/Paris)
+            </p>
+            <p>
+              Livraison 1 page (max 6 sections) + 1 mini-édition (≤15 min) • Paiement 100% à la commande
+            </p>
           </div>
         </motion.div>
 
@@ -113,46 +130,48 @@ export const Pricing = () => {
           {packs.map((pack, index) => (
             <motion.div
               key={pack.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              transition={{ delay: 0.2 + index * 0.1, duration: 0.3 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
               className="relative"
             >
-              <Card className={`h-full professional-card ${
-                pack.popular ? 'border-2 border-accent' : ''
+              <Card className={`h-full glass-card transition-all duration-200 ${
+                pack.popular ? 'border-2 border-cyan/60 shadow-glow animate-pulseGlow' : 'border-indigo/30'
               }`}>
                 {pack.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-medium bg-accent text-background">
+                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-violet to-cyan text-white shadow-neon">
                     Plus populaire
                   </span>
                 )}
                 
                 <CardHeader>
-                  <CardTitle className="text-2xl font-medium text-foreground">{pack.name}</CardTitle>
-                  <CardDescription>{pack.subtitle}</CardDescription>
+                  <CardTitle className="text-2xl font-bold text-accentlight">{pack.name}</CardTitle>
+                  <CardDescription className="text-accentlight/60">{pack.subtitle}</CardDescription>
                   <div className="mt-4">
-                    <span className="text-4xl font-medium text-foreground">{pack.price}€</span>
+                    <span className="text-4xl font-extrabold bg-gradient-to-r from-cyan to-indigo bg-clip-text text-transparent">{pack.price}€</span>
                   </div>
-                  <p className="text-muted-foreground mt-2 text-sm">{pack.duration}</p>
+                  <p className="text-accentlight/70 mt-2 text-sm">{pack.duration}</p>
                 </CardHeader>
                 
                 <CardContent className="space-y-6">
                   <ul className="space-y-3">
                     {pack.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <Check className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
+                        <Check className="w-5 h-5 text-cyan mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-accentlight/80">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   
                   <Button
-                    className={`w-full ${
+                    className={`w-full font-semibold rounded-2xl transition-all duration-200 ${
                       pack.popular 
-                        ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
-                        : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                        ? 'bg-gradient-to-r from-indigo via-cyan to-violet shadow-neon hover:brightness-125' 
+                        : 'border-2 border-indigo/50 bg-transparent text-accentlight hover:bg-indigo/10'
                     }`}
+                    variant={pack.popular ? "default" : "outline"}
                     onClick={scrollToContact}
                   >
                     Choisir ce pack
@@ -171,23 +190,25 @@ export const Pricing = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <Card className="professional-card">
+          <Card className="glass border-border/50">
             <CardHeader>
-              <CardTitle className="text-xl text-foreground">Add-ons disponibles</CardTitle>
+              <CardTitle className="text-xl gradient-text">Add-ons disponibles</CardTitle>
               <CardDescription>
-                Personnalisez votre projet avec ces options
+                Personnalisez votre projet avec ces options supplémentaires
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid sm:grid-cols-2 gap-4">
                 {addons.map((addon, index) => (
-                  <div 
+                  <motion.div 
                     key={index}
-                    className="flex items-center justify-between p-4 rounded-lg bg-secondary/30 border border-border"
+                    className="flex items-center justify-between p-4 rounded-lg glass border border-border/30 hover:border-primary/30 transition-all hover-glow"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 400 }}
                   >
-                    <span className="font-medium text-foreground">{addon.name}</span>
-                    <Badge className="bg-accent/20 text-foreground border-accent/30">{addon.price}</Badge>
-                  </div>
+                    <span className="font-medium">{addon.name}</span>
+                    <Badge className="bg-primary/20 text-primary border-primary/30">{addon.price}</Badge>
+                  </motion.div>
                 ))}
               </div>
             </CardContent>

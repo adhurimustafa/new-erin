@@ -43,20 +43,22 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="py-24 px-4 bg-background">
-      <div className="container mx-auto max-w-4xl">
+    <section id="faq" className="py-24 px-4 relative overflow-hidden bg-midnight">
+      <div className="container mx-auto max-w-4xl relative z-10">
         {/* Header */}
         <motion.div 
-          className="text-center mb-16 space-y-4"
+          className="text-center mb-12 space-y-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.3 }}
         >
-          <h2 className="text-4xl md:text-5xl font-medium text-foreground">
-            Questions Fréquentes
+          <h2 className="text-4xl md:text-5xl font-extrabold">
+            <span className="bg-gradient-to-r from-violet via-cyan to-indigo bg-clip-text text-transparent">
+              Questions Fréquentes
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-xl text-accentlight/80">
             Tout ce que vous devez savoir sur nos services
           </p>
         </motion.div>
@@ -66,19 +68,19 @@ export const FAQ = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
         >
           <Accordion type="single" collapsible className="w-full space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="professional-card px-6"
+                className="glass-card border-indigo/30 px-6 hover:border-cyan/40 transition-all"
               >
-                <AccordionTrigger className="text-left font-medium text-foreground">
+                <AccordionTrigger className="text-left font-semibold text-accentlight hover:text-cyan">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pt-2">
+                <AccordionContent className="text-accentlight/70 leading-relaxed pt-2">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -88,24 +90,25 @@ export const FAQ = () => {
 
         {/* CTA */}
         <motion.div 
-          className="text-center mt-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          className="text-center mt-12 p-6 rounded-2xl glass-card border-cyan/30"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
         >
-          <p className="text-muted-foreground mb-4">
+          <p className="text-accentlight/70 mb-4">
             Vous avez une autre question ?
           </p>
           <a 
             href="#contact" 
-            className="text-foreground hover:text-accent transition-colors font-medium"
+            className="text-cyan font-bold hover:text-violet transition-colors inline-flex items-center gap-2"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            Contactez-nous directement →
+            Contactez-nous directement 
+            <span className="inline-block group-hover:translate-x-1 transition-transform">→</span>
           </a>
         </motion.div>
       </div>

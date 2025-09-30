@@ -68,26 +68,19 @@ export const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-background relative overflow-hidden">
-      {/* Background glow */}
-      <motion.div 
-        className="absolute top-1/2 left-1/2 w-96 h-96 rounded-full bg-accent/10 blur-[120px] -translate-x-1/2 -translate-y-1/2"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-
-      <div className="container px-4 sm:px-6 lg:px-8 mx-auto relative z-10">
+    <section id="contact" className="py-24 px-4 bg-card/20">
+      <div className="container mx-auto max-w-5xl">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <motion.div 
-            className="text-center mb-12"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="gradient-text">Parlons de votre projet</span>
+            <h2 className="text-4xl md:text-5xl font-medium mb-4 text-foreground">
+              Parlons de votre projet
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24h
@@ -103,42 +96,29 @@ export const ContactForm = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="p-6 rounded-lg glass border border-border/50">
-                <h3 className="font-semibold text-lg mb-6 gradient-text">Informations de contact</h3>
+              <div className="p-6 rounded-lg professional-card">
+                <h3 className="font-medium text-lg mb-6 text-foreground">Contact</h3>
                 
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <Mail className="w-5 h-5 text-primary" />
+                    <Mail className="w-5 h-5 text-muted-foreground mt-0.5" />
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">Email</p>
+                      <a href="mailto:adhurimustafa@gmail.com" className="text-foreground hover:text-accent transition-colors">
+                        adhurimustafa@gmail.com
+                      </a>
                     </div>
-                  <div>
-                    <p className="font-medium text-sm text-muted-foreground mb-1">Email</p>
-                    <a href="mailto:adhurimustafa@gmail.com" className="text-foreground hover:text-primary transition-colors">
-                      adhurimustafa@gmail.com
-                    </a>
                   </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-primary/10">
-                    <MapPin className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-sm text-muted-foreground mb-1">Localisation</p>
-                    <p className="text-foreground">Rue Roland Garros</p>
-                    <p className="text-foreground">33160 Saint-Médard-en-Jalles</p>
-                    <p className="text-muted-foreground text-sm mt-1">Bordeaux Métropole</p>
+                  <div className="flex items-start gap-4">
+                    <MapPin className="w-5 h-5 text-muted-foreground mt-0.5" />
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">Localisation</p>
+                      <p className="text-foreground">Saint-Médard-en-Jalles</p>
+                      <p className="text-muted-foreground text-sm">Bordeaux Métropole</p>
+                    </div>
                   </div>
                 </div>
-                </div>
-              </div>
-
-              <div className="p-6 rounded-lg glass border border-accent/30">
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  <strong className="text-foreground">Zone :</strong> Bordeaux Métropole + alentours
-                  <br />
-                  <strong className="text-foreground">Disponibilité :</strong> Nous répondons généralement sous 24h en semaine.
-                </p>
               </div>
             </motion.div>
 
@@ -150,7 +130,7 @@ export const ContactForm = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <form onSubmit={handleSubmit} className="p-8 rounded-lg glass border border-border/50 space-y-6">
+              <form onSubmit={handleSubmit} className="p-8 rounded-lg professional-card space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">
@@ -206,23 +186,20 @@ export const ContactForm = () => {
                     required
                     className="min-h-[150px] resize-none"
                   />
-                  <p className="text-sm text-muted-foreground">
-                    Plus vous êtes précis, plus nous pourrons vous répondre rapidement et efficacement.
-                  </p>
                 </div>
 
                 <Button 
                   type="submit" 
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto group glow-blue hover-glow bg-primary hover:bg-primary/90"
+                  className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   {isSubmitting ? (
                     <>Envoi en cours...</>
                   ) : (
                     <>
                       Envoyer le message
-                      <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <Send className="ml-2 w-4 h-4" />
                     </>
                   )}
                 </Button>

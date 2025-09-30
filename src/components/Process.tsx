@@ -28,62 +28,55 @@ const steps = [
 
 export const Process = () => {
   return (
-    <section id="process" className="py-24 px-4 relative overflow-hidden" style={{ background: '#0A1025' }}>
-      <div className="container mx-auto max-w-7xl relative z-10">
+    <section id="process" className="py-24 px-4 bg-card/20">
+      <div className="container mx-auto max-w-7xl">
         <motion.div 
           className="text-center mb-16 space-y-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold">
-            <span className="bg-gradient-to-r from-cyan via-violet to-indigo bg-clip-text text-transparent">
-              Comment ça marche ?
-            </span>
+          <h2 className="text-4xl md:text-5xl font-medium text-foreground">
+            Comment ça marche ?
           </h2>
-          <p className="text-xl text-accentlight/80 max-w-2xl mx-auto">
-            Un processus simple et efficace en 3 étapes pour transformer votre idée en réalité
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Un processus simple en 3 étapes
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            >
-              <Card className="relative overflow-hidden glass-card border-indigo/30 h-full">
-                <CardContent className="p-8">
-                  {/* Step Number Badge */}
-                  <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-gradient-to-br from-cyan/20 to-violet/20 flex items-center justify-center shadow-glow">
-                    <span className="text-2xl font-bold bg-gradient-to-r from-cyan to-indigo bg-clip-text text-transparent">{index + 1}</span>
-                  </div>
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+              >
+                <Card className="professional-card h-full">
+                  <CardContent className="p-8">
+                    {/* Icon */}
+                    <div className="mb-6">
+                      <div className="w-16 h-16 rounded-full bg-secondary/30 flex items-center justify-center mx-auto">
+                        <Icon className="w-8 h-8 text-foreground" />
+                      </div>
+                    </div>
 
-                  {/* Icon/Image */}
-                  <div className="mb-6 relative">
-                    <img 
-                      src={step.image} 
-                      alt={step.title}
-                      className="w-24 h-24 mx-auto object-contain"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-xl font-bold mb-3 text-accentlight">
-                    {step.title}
-                  </h3>
-                  <p className="text-accentlight/70 leading-relaxed">
-                    {step.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                    {/* Content */}
+                    <h3 className="text-xl font-medium mb-3 text-foreground text-center">
+                      {step.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-center">
+                      {step.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

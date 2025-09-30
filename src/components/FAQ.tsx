@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { motion } from "framer-motion";
 
 const faqs = [
   {
@@ -42,53 +43,76 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="py-20 bg-muted/30">
-      <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
+    <section id="faq" className="py-20 bg-card/30 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-card/50 pointer-events-none" />
+
+      <div className="container px-4 sm:px-6 lg:px-8 mx-auto relative z-10">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12 animate-fade-in">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Questions Fréquentes
+              <span className="gradient-text">Questions Fréquentes</span>
             </h2>
             <p className="text-lg text-muted-foreground">
               Tout ce que vous devez savoir sur nos services
             </p>
-          </div>
+          </motion.div>
 
           {/* FAQ Accordion */}
-          <Accordion type="single" collapsible className="w-full space-y-4 animate-slide-up">
-            {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
-                value={`item-${index}`}
-                className="border rounded-lg px-6 bg-card shadow-sm"
-              >
-                <AccordionTrigger className="text-left font-semibold hover:text-primary">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pt-2">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="border border-border/50 rounded-lg px-6 glass hover:border-primary/30 transition-all"
+                >
+                  <AccordionTrigger className="text-left font-semibold hover:text-primary">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed pt-2">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
 
           {/* CTA */}
-          <div className="text-center mt-12 p-6 rounded-lg bg-card border-2 animate-fade-in">
+          <motion.div 
+            className="text-center mt-12 p-6 rounded-lg glass border border-border/50 hover:border-accent/30 transition-all"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <p className="text-muted-foreground mb-4">
               Vous avez une autre question ?
             </p>
             <a 
               href="#contact" 
-              className="text-primary font-medium hover:underline"
+              className="text-primary font-medium hover:text-accent transition-colors inline-flex items-center gap-2"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Contactez-nous directement →
+              Contactez-nous directement 
+              <span className="inline-block group-hover:translate-x-1 transition-transform">→</span>
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -4,8 +4,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -67,69 +68,89 @@ export const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-background">
-      <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
+    <section id="contact" className="py-20 bg-background relative overflow-hidden">
+      {/* Background glow */}
+      <motion.div 
+        className="absolute top-1/2 left-1/2 w-96 h-96 rounded-full bg-accent/10 blur-[120px] -translate-x-1/2 -translate-y-1/2"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+
+      <div className="container px-4 sm:px-6 lg:px-8 mx-auto relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12 animate-fade-in">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Parlons de votre projet
+              <span className="gradient-text">Parlons de votre projet</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24h
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Contact Info */}
-            <div className="lg:col-span-1 space-y-6 animate-slide-up">
-              <div className="p-6 rounded-lg bg-card border-2">
-                <h3 className="font-semibold text-lg mb-6">Informations de contact</h3>
+            <motion.div 
+              className="lg:col-span-1 space-y-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="p-6 rounded-lg glass border border-border/50">
+                <h3 className="font-semibold text-lg mb-6 gradient-text">Informations de contact</h3>
                 
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="p-2 rounded-lg bg-primary/10">
                       <Mail className="w-5 h-5 text-primary" />
                     </div>
-                    <div>
-                      <p className="font-medium text-sm text-muted-foreground mb-1">Email</p>
-                      <p className="text-foreground">[EMAIL CONTACT]</p>
-                    </div>
+                  <div>
+                    <p className="font-medium text-sm text-muted-foreground mb-1">Email</p>
+                    <a href="mailto:adhurimustafa@gmail.com" className="text-foreground hover:text-primary transition-colors">
+                      adhurimustafa@gmail.com
+                    </a>
                   </div>
+                </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <Phone className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-sm text-muted-foreground mb-1">Téléphone</p>
-                      <p className="text-foreground">[TÉLÉPHONE]</p>
-                    </div>
+                <div className="flex items-start gap-4">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <MapPin className="w-5 h-5 text-primary" />
                   </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <MapPin className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-sm text-muted-foreground mb-1">Localisation</p>
-                      <p className="text-foreground">[VILLE/PAYS]</p>
-                    </div>
+                  <div>
+                    <p className="font-medium text-sm text-muted-foreground mb-1">Localisation</p>
+                    <p className="text-foreground">Rue Roland Garros</p>
+                    <p className="text-foreground">33160 Saint-Médard-en-Jalles</p>
+                    <p className="text-muted-foreground text-sm mt-1">Bordeaux Métropole</p>
                   </div>
+                </div>
                 </div>
               </div>
 
-              <div className="p-6 rounded-lg bg-primary/5 border border-primary/20">
+              <div className="p-6 rounded-lg glass border border-accent/30">
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  <strong className="text-foreground">Disponibilité :</strong> Nous répondons généralement sous 24h en semaine. 
-                  Pour une réponse immédiate, préférez l'appel téléphonique.
+                  <strong className="text-foreground">Zone :</strong> Bordeaux Métropole + alentours
+                  <br />
+                  <strong className="text-foreground">Disponibilité :</strong> Nous répondons généralement sous 24h en semaine.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Contact Form */}
-            <div className="lg:col-span-2 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-              <form onSubmit={handleSubmit} className="p-8 rounded-lg bg-card border-2 space-y-6">
+            <motion.div 
+              className="lg:col-span-2"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <form onSubmit={handleSubmit} className="p-8 rounded-lg glass border border-border/50 space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">
@@ -194,7 +215,7 @@ export const ContactForm = () => {
                   type="submit" 
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto group"
+                  className="w-full sm:w-auto group glow-blue hover-glow bg-primary hover:bg-primary/90"
                 >
                   {isSubmitting ? (
                     <>Envoi en cours...</>
@@ -206,7 +227,7 @@ export const ContactForm = () => {
                   )}
                 </Button>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -70,13 +70,13 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
         midnight: "hsl(var(--midnight))",
-        indigo: "hsl(var(--indigo))",
-        violet: "hsl(var(--violet))",
-        cyan: "hsl(var(--cyan))",
+        purple: "hsl(var(--purple))",
+        golden: "hsl(var(--golden))",
+        turquoise: "hsl(var(--turquoise))",
         ivory: "hsl(var(--ivory))",
       },
       boxShadow: {
-        glow: "0 0 40px hsl(var(--cyan) / 0.3), 0 0 80px hsl(var(--indigo) / 0.2)",
+        glow: "0 0 40px hsl(var(--golden) / 0.4), 0 0 80px hsl(var(--purple) / 0.3)",
         card: "0 4px 24px hsl(var(--midnight) / 0.8)",
       },
       borderRadius: {

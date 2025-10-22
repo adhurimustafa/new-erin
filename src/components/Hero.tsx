@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Zap, MapPin } from "lucide-react";
+import { Sparkles, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -25,13 +25,13 @@ export const Hero = () => {
         >
           {/* Badge */}
           <motion.div
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card border border-cyan/30"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card border border-golden/30"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1, duration: 0.3 }}
           >
-            <Zap className="w-4 h-4 text-cyan" fill="currentColor" />
-            <span className="text-sm font-semibold text-cyan">Option Express 4–8h</span>
+            <Sparkles className="w-4 h-4 text-golden" fill="currentColor" />
+            <span className="text-sm font-semibold text-golden">Human + IA</span>
           </motion.div>
 
           {/* Main heading with gradient text */}
@@ -43,14 +43,14 @@ export const Hero = () => {
           >
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight font-heading">
               <span className="gradient-tadam text-glow">
-                Brief → Tadam →
+                La magie de
                 <br />
-                en ligne
+                la simplicité
               </span>
               <span className="block mt-6 text-xl md:text-3xl font-medium text-ivory/90">
-                Votre site clair, mobile et prêt à convertir
+                Des solutions rapides et humaines,
                 <br />
-                <span className="text-cyan">en 4–8h</span> <span className="text-muted-foreground">(ou 48–72h)</span>
+                amplifiées par <span className="text-golden">l'intelligence artificielle</span>
               </span>
             </h1>
           </motion.div>
@@ -62,8 +62,8 @@ export const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.3 }}
           >
-            Première version visible dès 4 heures. Site complet, domaine personnalisé et publication garantie.
-            <span className="block mt-2 text-ivory/80">Parfait pour entrepreneurs et créateurs qui veulent lancer vite.</span>
+            Avec TADAM, tout devient simple. Une touche humaine, une pincée d'IA…
+            <span className="block mt-2 text-ivory/80">et le problème disparaît. Comme par magie.</span>
           </motion.p>
 
           {/* Location indicator */}
@@ -73,8 +73,8 @@ export const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.3 }}
           >
-            <MapPin className="w-5 h-5 text-cyan" />
-            <span className="font-medium">Bordeaux Métropole • Présentiel disponible</span>
+            <MapPin className="w-5 h-5 text-golden" />
+            <span className="font-medium">Bordeaux Métropole • Services accessibles à tous</span>
           </motion.div>
 
           {/* CTA Buttons */}
@@ -84,24 +84,23 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.3 }}
           >
-            <Link to="/reserver">
-              <Button
-                size="lg"
-                className="text-lg font-semibold px-10 py-7 bg-gradient-tadam rounded-2xl text-midnight transition-all duration-300 hover:shadow-glow hover:scale-105 focus:ring-4 focus:ring-cyan/50"
-              >
-                Réserver un créneau
-              </Button>
-            </Link>
+            <Button
+              size="lg"
+              onClick={scrollToContact}
+              className="text-lg font-semibold px-10 py-7 bg-gradient-tadam rounded-2xl text-midnight transition-all duration-300 hover:shadow-glow hover:scale-105 focus:ring-4 focus:ring-golden/50"
+            >
+              Découvrir nos services
+            </Button>
             <Button
               size="lg"
               variant="outline"
               onClick={() => {
-                const pricingSection = document.getElementById('pricing');
-                pricingSection?.scrollIntoView({ behavior: 'smooth' });
+                const servicesSection = document.getElementById('services');
+                servicesSection?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="text-lg font-semibold px-10 py-7 border-2 border-cyan/40 bg-transparent text-ivory hover:bg-cyan/10 hover:border-cyan rounded-2xl transition-all duration-300"
+              className="text-lg font-semibold px-10 py-7 border-2 border-golden/40 bg-transparent text-ivory hover:bg-golden/10 hover:border-golden rounded-2xl transition-all duration-300"
             >
-              Voir les forfaits
+              En savoir plus
             </Button>
           </motion.div>
 
@@ -114,27 +113,27 @@ export const Hero = () => {
           >
             <div className="flex items-center gap-2">
               <motion.div
-                className="w-2 h-2 rounded-full bg-cyan"
+                className="w-2 h-2 rounded-full bg-purple"
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              <span className="font-medium">Livraison garantie</span>
+              <span className="font-medium">Humain + IA</span>
             </div>
             <div className="flex items-center gap-2">
               <motion.div
-                className="w-2 h-2 rounded-full bg-indigo"
+                className="w-2 h-2 rounded-full bg-golden"
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity, delay: 0.7 }}
               />
-              <span className="font-medium">Paiement sécurisé</span>
+              <span className="font-medium">Rapide & efficace</span>
             </div>
             <div className="flex items-center gap-2">
               <motion.div
-                className="w-2 h-2 rounded-full bg-violet"
+                className="w-2 h-2 rounded-full bg-turquoise"
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity, delay: 1.4 }}
               />
-              <span className="font-medium">Support inclus</span>
+              <span className="font-medium">Pour tous les âges</span>
             </div>
           </motion.div>
         </motion.div>

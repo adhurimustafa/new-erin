@@ -8,36 +8,36 @@ import { motion } from "framer-motion";
 
 const faqs = [
   {
-    question: "Quels sont les délais de livraison ?",
-    answer: "En standard : 48–72h après réception du formulaire complet et paiement de l'acompte. Avec l'option Express : 4–8h (même jour) après paiement intégral."
+    question: "Qu'est-ce que TADAM exactement ?",
+    answer: "TADAM, c'est la rencontre entre l'expertise humaine et la puissance de l'intelligence artificielle. Nous proposons des solutions digitales rapides, simples et accessibles à tous : création de sites web, chatbots, conseil IA et accompagnement personnalisé."
   },
   {
-    question: "Qu'en est-il du nom de domaine ?",
-    answer: "Si vous avez déjà un domaine et nous donnez accès DNS, nous le connectons gratuitement. Sinon, nous publions sur un sous-domaine provisoire et vous guidons pour l'achat."
+    question: "Comment l'IA et l'humain travaillent ensemble ?",
+    answer: "L'IA nous permet d'être plus rapides et efficaces, mais c'est l'humain qui guide, décide et apporte l'empathie. Chaque projet bénéficie de cette synergie : la rapidité de l'IA et la créativité humaine."
   },
   {
-    question: "Combien d'aller-retours de modifications ?",
-    answer: "Pack A : 1 aller-retour. Packs B & C : 2 aller-retours. En option Express : 1 aller-retour limité à 15 minutes de modifications."
+    question: "Est-ce adapté aux personnes peu à l'aise avec la technologie ?",
+    answer: "Absolument ! C'est justement notre force. Nous prenons le temps d'expliquer, d'accompagner et de former. TADAM rend la technologie accessible à tous, quel que soit votre niveau."
   },
   {
-    question: "Comment se fait le paiement ?",
-    answer: "En standard : acompte de 50% à la commande, solde avant mise en ligne. En Express : paiement 100% à la commande pour démarrage immédiat."
+    question: "Quels types de projets acceptez-vous ?",
+    answer: "Nous travaillons sur une grande variété de projets : sites web, boutiques en ligne, chatbots, automatisations, conseil stratégique IA, formation digitale... Si vous avez un besoin, contactez-nous pour en discuter !"
   },
   {
-    question: "Le site sera-t-il optimisé pour mobile ?",
-    answer: "Oui, absolument ! Tous nos sites sont mobile-first, 100% responsive et optimisés pour tous les appareils (smartphone, tablette, desktop)."
+    question: "Combien de temps prend un projet typique ?",
+    answer: "Cela dépend du projet ! Un site web simple peut être prêt en quelques jours, tandis qu'un projet plus complexe peut prendre quelques semaines. Nous discutons toujours des délais dès le début."
   },
   {
-    question: "Puis-je modifier le contenu après la livraison ?",
-    answer: "Oui ! Vous recevez un mini-tutoriel pour les modifications simples. Pour des changements plus importants, nous proposons un forfait maintenance à tarif préférentiel."
+    question: "Proposez-vous un accompagnement après la livraison ?",
+    answer: "Oui, toujours ! Nous incluons une formation de prise en main et restons disponibles pour vos questions. Nous proposons également des forfaits de maintenance et support sur mesure."
   },
   {
-    question: "Qu'inclut le SEO de base ?",
-    answer: "Titre et meta description optimisés, balises structurées, sitemap XML, intégration Analytics et Open Graph pour les réseaux sociaux. Le SEO avancé (+70€) inclut l'optimisation de contenu et la stratégie de mots-clés."
+    question: "Travaillez-vous avec des seniors ?",
+    answer: "Bien sûr ! Nous avons une approche particulièrement patiente et pédagogique pour accompagner les seniors. Chaque étape est expliquée clairement, à votre rythme."
   },
   {
-    question: "Que se passe-t-il si je ne suis pas satisfait ?",
-    answer: "Nous travaillons en étroite collaboration avec vous et incluons des aller-retours dans chaque pack. Notre objectif est votre satisfaction totale. Si un problème survient, nous le résolvons ensemble."
+    question: "Comment se passe le premier contact ?",
+    answer: "Simple comme bonjour ! Utilisez le formulaire de contact ci-dessous ou appelez-nous directement. Nous prendrons le temps d'écouter votre besoin et de vous proposer la meilleure solution."
   }
 ];
 
@@ -54,12 +54,12 @@ export const FAQ = () => {
           transition={{ duration: 0.3 }}
         >
           <h2 className="text-4xl md:text-5xl font-extrabold">
-            <span className="bg-gradient-to-r from-violet via-cyan to-indigo bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple via-golden to-turquoise bg-clip-text text-transparent">
               Questions Fréquentes
             </span>
           </h2>
           <p className="text-xl text-accentlight/80">
-            Tout ce que vous devez savoir sur nos services
+            Tout ce que vous devez savoir sur TADAM
           </p>
         </motion.div>
 
@@ -75,9 +75,9 @@ export const FAQ = () => {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="glass-card border-indigo/30 px-6 hover:border-cyan/40 transition-all"
+                className="glass-card border-purple/30 px-6 hover:border-golden/40 transition-all"
               >
-                <AccordionTrigger className="text-left font-semibold text-accentlight hover:text-cyan">
+                <AccordionTrigger className="text-left font-semibold text-accentlight hover:text-golden">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-accentlight/70 leading-relaxed pt-2">
@@ -90,7 +90,7 @@ export const FAQ = () => {
 
         {/* CTA */}
         <motion.div 
-          className="text-center mt-12 p-6 rounded-2xl glass-card border-cyan/30"
+          className="text-center mt-12 p-6 rounded-2xl glass-card border-golden/30"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -101,7 +101,7 @@ export const FAQ = () => {
           </p>
           <a 
             href="#contact" 
-            className="text-cyan font-bold hover:text-violet transition-colors inline-flex items-center gap-2"
+            className="text-golden font-bold hover:text-turquoise transition-colors inline-flex items-center gap-2"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });

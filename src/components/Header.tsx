@@ -17,7 +17,7 @@ export const Header = () => {
 
           {/* Tagline */}
           <div className="hidden md:block text-sm text-muted-foreground font-medium">
-            Tadam, votre site apparaît.
+            La magie de la simplicité
           </div>
 
           {/* CTA */}

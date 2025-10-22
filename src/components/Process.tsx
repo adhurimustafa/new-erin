@@ -1,28 +1,27 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Clock, Cog, Rocket } from "lucide-react";
+import { MessageCircle, Sparkles, Rocket, Heart } from "lucide-react";
 import { motion } from "framer-motion";
-import step1 from "@/assets/step-1.png";
-import step2 from "@/assets/step-2.png";
-import step3 from "@/assets/step-3.png";
 
 const steps = [
   {
-    icon: Clock,
-    image: step1,
-    title: "1. Formulaire 10 min + paiement",
-    description: "Remplissez un brief structuré et validez votre commande. Acompte 50% en standard, 100% pour l'option Express."
+    icon: MessageCircle,
+    title: "1. Discussion",
+    description: "Nous prenons le temps d'écouter et de comprendre votre besoin. Un échange humain et bienveillant pour définir la meilleure solution."
   },
   {
-    icon: Cog,
-    image: step2,
-    title: "2. Production (copie, visuels, build)",
-    description: "Je structure le contenu, génère les visuels avec l'IA et construit votre site. Express 4–8h ou Standard 48–72h."
+    icon: Sparkles,
+    title: "2. Création IA + Humaine",
+    description: "L'intelligence artificielle travaille à vos côtés, guidée par notre expertise humaine. Le meilleur des deux mondes pour un résultat optimal."
   },
   {
     icon: Rocket,
-    image: step3,
-    title: "3. Mise en ligne + mini-tuto + analytics",
-    description: "Votre site est déployé, vous recevez un guide de prise en main et les analytics sont configurés."
+    title: "3. Livraison",
+    description: "Votre solution est prête ! Rapide, efficace, et exactement comme vous l'avez imaginée. Sans stress, sans complication."
+  },
+  {
+    icon: Heart,
+    title: "4. Accompagnement",
+    description: "Nous restons à vos côtés après la livraison. Formation, support, conseils : vous n'êtes jamais seul avec TADAM."
   }
 ];
 
@@ -38,53 +37,75 @@ export const Process = () => {
           transition={{ duration: 0.3 }}
         >
           <h2 className="text-4xl md:text-5xl font-extrabold">
-            <span className="bg-gradient-to-r from-cyan via-violet to-indigo bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-turquoise via-golden to-purple bg-clip-text text-transparent">
               Comment ça marche ?
             </span>
           </h2>
           <p className="text-xl text-accentlight/80 max-w-2xl mx-auto">
-            Un processus simple et efficace en 3 étapes pour transformer votre idée en réalité
+            Un processus simple et humain en 4 étapes
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            >
-              <Card className="relative overflow-hidden glass-card border-indigo/30 h-full">
-                <CardContent className="p-8">
-                  {/* Step Number Badge */}
-                  <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-gradient-to-br from-cyan/20 to-violet/20 flex items-center justify-center shadow-glow">
-                    <span className="text-2xl font-bold bg-gradient-to-r from-cyan to-indigo bg-clip-text text-transparent">{index + 1}</span>
-                  </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              >
+                <Card className="relative overflow-hidden glass-card border-purple/30 h-full">
+                  <CardContent className="p-6">
+                    {/* Step Number Badge */}
+                    <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gradient-to-br from-golden/20 to-purple/20 flex items-center justify-center shadow-glow">
+                      <span className="text-xl font-bold bg-gradient-to-r from-golden to-purple bg-clip-text text-transparent">{index + 1}</span>
+                    </div>
 
-                  {/* Icon/Image */}
-                  <div className="mb-6 relative">
-                    <img 
-                      src={step.image} 
-                      alt={step.title}
-                      className="w-24 h-24 mx-auto object-contain"
-                    />
-                  </div>
+                    {/* Icon */}
+                    <div className="mb-6">
+                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple/20 to-turquoise/20 flex items-center justify-center mx-auto shadow-glow">
+                        <Icon className="w-8 h-8 text-golden" />
+                      </div>
+                    </div>
 
-                  {/* Content */}
-                  <h3 className="text-xl font-bold mb-3 text-accentlight">
-                    {step.title}
-                  </h3>
-                  <p className="text-accentlight/70 leading-relaxed">
-                    {step.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                    {/* Content */}
+                    <h3 className="text-lg font-bold mb-3 text-accentlight text-center">
+                      {step.title}
+                    </h3>
+                    <p className="text-accentlight/70 leading-relaxed text-center text-sm">
+                      {step.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.3 }}
+        >
+          <p className="text-lg text-accentlight/80 mb-4">
+            Prêt à découvrir la magie de TADAM ?
+          </p>
+          <button
+            onClick={() => {
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="px-8 py-3 bg-gradient-tadam rounded-xl text-midnight font-semibold hover:shadow-glow transition-all duration-300 hover:scale-105"
+          >
+            Contactez-nous
+          </button>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,11 +1,11 @@
 {
-  "name": "Tadam! - Votre site en ligne en 4h",
-  "short_name": "Tadam!",
-  "description": "Brief → Tadam → en ligne. Votre site clair, mobile et prêt à convertir",
+  "name": "TADAM - La magie de la simplicité",
+  "short_name": "TADAM",
+  "description": "Des solutions rapides et humaines, amplifiées par l'intelligence artificielle",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0B0F19",
-  "theme_color": "#00E6FF",
+  "theme_color": "#E2C165",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -16,7 +16,7 @@
     },
     {
       "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }

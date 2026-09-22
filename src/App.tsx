@@ -7,11 +7,15 @@ import Index from "./pages/Index";
 import Reserver from "./pages/Reserver";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
+import Legal from "./pages/Legal";
+import Privacy from "./pages/Privacy";
+import { LanguageProvider } from "./i18n";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <LanguageProvider>
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -20,10 +24,13 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/reserver" element={<Reserver />} />
           <Route path="/merci" element={<ThankYou />} />
+          <Route path="/mentions-legales" element={<Legal />} />
+          <Route path="/confidentialite" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
+    </LanguageProvider>
   </QueryClientProvider>
 );
 

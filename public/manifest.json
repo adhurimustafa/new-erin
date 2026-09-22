@@ -1,11 +1,11 @@
 {
-  "name": "TADAM - La magie de la simplicité",
+  "name": "TADAM - Krijim faqesh interneti",
   "short_name": "TADAM",
-  "description": "Des solutions rapides et humaines, amplifiées par l'intelligence artificielle",
+  "description": "Krijim faqesh interneti me mbështetje personale në Kosovë dhe në distancë",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0B0F19",
-  "theme_color": "#E2C165",
+  "background_color": "#0D1220",
+  "theme_color": "#D9B86C",
   "orientation": "portrait-primary",
   "icons": [
     {

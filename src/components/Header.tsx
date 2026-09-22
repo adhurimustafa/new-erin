@@ -11,7 +11,7 @@ export const Header = () => {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
-  const links = [["#realisations", t.nav.work], ["#services", t.nav.services], ["#methode", t.nav.method], ["#apropos", t.nav.about], ["#contact", t.nav.contact]];
+  const links: [string, string][] = [["#realisations", t.nav.work], ["#services", t.nav.services], ["#methode", t.nav.method], ["#apropos", t.nav.about], ["#contact", t.nav.contact]];
   const homeHref = (hash: string) => location.pathname === "/" ? hash : `/${hash}`;
   const closeMenu = (restore = false) => { setOpen(false); if (restore) requestAnimationFrame(() => triggerRef.current?.focus()); };
   useEffect(() => {

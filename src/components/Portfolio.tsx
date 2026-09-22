@@ -21,7 +21,7 @@ export function Portfolio() {
         <div className="portfolio-grid">
           {t.work.projects.map((project, index) => (
             <article className="project-card" key={project.name}>
-              <div className="project-image"><img src={images[index]} alt={project.alt} width="1200" height="731" loading="lazy" /></div>
+              <div className="project-image"><div className="project-browser-bar" aria-hidden="true"><i /><i /><i /></div><img src={images[index]} alt={project.alt} width="1200" height="731" loading="lazy" /></div>
               <div className="project-content">
                 <span className="badge">{t.work.client}</span>
                 <p className="project-category">{project.category}</p>
@@ -35,7 +35,7 @@ export function Portfolio() {
           ))}
         </div>
         <article className="concept-block">
-          <div className="concept-image"><img src={auBonGout} alt={`${t.work.conceptTitle} — Au Bon Goût`} width="1200" height="731" loading="lazy" /></div>
+          <div className="concept-image"><div className="project-browser-bar" aria-hidden="true"><i /><i /><i /></div><img src={auBonGout} alt={`${t.work.conceptTitle} — Au Bon Goût`} width="1200" height="731" loading="lazy" /></div>
           <div className="concept-copy">
             <span className="badge badge-muted">{t.work.conceptBadge}</span>
             <p className="project-category">{t.work.conceptTitle} • Au Bon Goût • France</p>

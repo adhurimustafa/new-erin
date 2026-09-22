@@ -24,7 +24,7 @@ export const Header = () => {
     <header className="site-header">
       <div className="site-container header-inner">
         <Link to="/" className="brand-link" aria-label="TADAM"><img src={logoWordmark} alt="TADAM" /></Link>
-        <nav className="desktop-nav" aria-label="Navigation principale">
+        <nav className="desktop-nav" aria-label={t.nav.menu}>
           {links.map(([href, label]) => <a key={href} href={homeHref(href)}>{label}</a>)}
         </nav>
         <div className="header-actions">

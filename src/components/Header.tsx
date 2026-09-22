@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logoWordmark from "@/assets/logo-tadam-wordmark.png";
+import logoWordmark from "@/assets/logo-tadam-header.png";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n";
@@ -23,7 +23,7 @@ export const Header = () => {
   return (
     <header className="site-header">
       <div className="site-container header-inner">
-        <Link to="/" className="brand-link" aria-label="TADAM"><span className="logo-crop"><img src={logoWordmark} alt="TADAM" /></span></Link>
+        <Link to="/" className="brand-link" aria-label="TADAM"><img src={logoWordmark} alt="TADAM" /></Link>
         <nav className="desktop-nav" aria-label="Navigation principale">
           {links.map(([href, label]) => <a key={href} href={homeHref(href)}>{label}</a>)}
         </nav>

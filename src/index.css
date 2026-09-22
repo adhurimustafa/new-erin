@@ -48,9 +48,8 @@
   .section-heading > p { max-width: 430px; color: hsl(var(--muted-foreground)); }
   .site-header { position: fixed; inset: 0 0 auto; z-index: 50; background: hsl(var(--background) / .92); backdrop-filter: blur(14px); border-bottom: 1px solid hsl(var(--border)); }
   .header-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-  .brand-link { display: block; width: 138px; }
-  .logo-crop { display: block; height: 38px; overflow: hidden; position: relative; }
-  .logo-crop img { position: absolute; width: 140px; height: 140px; max-width: none; object-fit: contain; left: -1px; top: -51px; }
+  .brand-link { display: block; width: 138px; height: 42px; overflow: hidden; }
+  .brand-link img { width: 138px; height: 92px; object-fit: contain; transform: translateY(-25px); }
   .desktop-nav { display: flex; align-items: center; gap: 1.35rem; }
   .desktop-nav a { color: hsl(var(--muted-foreground)); font-size: .875rem; font-weight: 500; }
   .desktop-nav a:hover { color: hsl(var(--foreground)); }
@@ -118,6 +117,7 @@
   .site-footer { padding: 4rem 0 1.5rem; background: hsl(var(--surface-soft)); }
   .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr .7fr; gap: 3rem; }
   .footer-brand p, .footer-signature { color: hsl(var(--muted-foreground)); margin-top: .75rem; }
+  .footer-logo { width: 150px; height: 100px; object-fit: contain; object-position: left center; margin-block: -1.5rem -1rem; }
   .footer-name { font-weight: 700; margin-bottom: .5rem; }
   .site-footer nav { display: flex; flex-direction: column; gap: .65rem; color: hsl(var(--muted-foreground)); }
   .copyright { border-top: 1px solid hsl(var(--border)); margin-top: 3rem; padding-top: 1.5rem; color: hsl(var(--muted-foreground)); font-size: .8rem; }
@@ -153,8 +153,8 @@
   .section { padding: 4rem 0; }
   .header-inner { height: 68px; }
   .brand-link { width: 108px; }
-  .logo-crop { height: 32px; }
-  .logo-crop img { width: 112px; height: 112px; top: -40px; }
+  .brand-link { width: 112px; height: 38px; }
+  .brand-link img { width: 112px; height: 75px; transform: translateY(-19px); }
   .mobile-nav { top: 68px; }
   .hero-section { padding: 8.5rem 0 3rem; min-height: auto; }
   .hero-grid, .method-layout, .faq-layout, .about-layout, .contact-layout, .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }

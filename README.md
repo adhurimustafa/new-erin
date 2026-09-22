@@ -1,73 +1,37 @@
-# Welcome to your Lovable project
+# TADAM
 
-## Project info
+Site vitrine trilingue de TADAM, service de création de sites internet par Adhurim Mustafa.
 
-**URL**: https://lovable.dev/projects/40735dc4-babe-48dd-be2e-ac85e74304b5
+## Langues
 
-## How can I edit this code?
+- Albanais (`sq`) par défaut
+- Français (`fr`)
+- Anglais (`en`)
 
-There are several ways of editing your application.
+Les textes publics sont centralisés dans `src/i18n.tsx`. L’adresse email et les liens du portfolio sont centralisés dans `src/config.ts`.
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/40735dc4-babe-48dd-be2e-ac85e74304b5) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Développement
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Contrôles disponibles :
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+npm run lint
+npm run build
+```
 
-**Use GitHub Codespaces**
+## Contact
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Le formulaire public reste volontairement masqué tant qu’un service d’envoi serveur sécurisé n’est pas configuré et testé. Le site affiche à la place le contact email direct. `/reserver` redirige vers cette zone de contact et `/merci` ne simule jamais une transmission.
 
-## What technologies are used for this project?
+## Informations légales à confirmer
 
-This project is built with:
+Avant publication, compléter avec des données vérifiées : statut juridique, numéro d’immatriculation, adresse légale, mentions juridiques de l’hébergeur, base légale et durée de conservation lorsqu’un formulaire sera activé.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Publication
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/40735dc4-babe-48dd-be2e-ac85e74304b5) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Cette refonte est préparée pour l’aperçu. Elle ne doit être publiée qu’après validation explicite et complétion des informations légales nécessaires.

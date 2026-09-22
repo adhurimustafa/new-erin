@@ -10,8 +10,8 @@
 
 ## Refonte visuelle futuriste
 
-- [ ] Recomposer l’accueil autour des captures réelles
-- [ ] Moderniser portfolio, services, méthode, présentation, FAQ, contact et footer
-- [ ] Corriger le logo et harmoniser les interactions
-- [ ] Vérifier SQ/FR/EN, responsive, clavier, lint et build
-- [ ] Livrer les captures desktop et mobile sans publier
+- [x] Recomposer l’accueil autour des captures réelles
+- [x] Moderniser portfolio, services, méthode, présentation, FAQ, contact et footer
+- [x] Corriger le logo et harmoniser les interactions
+- [x] Vérifier SQ/FR/EN, responsive, clavier, lint et build
+- [x] Livrer les captures desktop et mobile sans publier

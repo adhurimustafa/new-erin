@@ -15,3 +15,10 @@
 - [x] Corriger le logo et harmoniser les interactions
 - [x] Vérifier SQ/FR/EN, responsive, clavier, lint et build
 - [x] Livrer les captures desktop et mobile sans publier
+
+## Studio — Lot 1 (fondations sécurisées)
+
+- [x] Lovable Cloud, rôles côté serveur, liste d'autorisation admin
+- [x] Pages /studio protégées, connexion/déconnexion, tableau de bord réel
+- [ ] Création du compte admin par l'utilisateur via /studio/activation (en attente de l'utilisateur)
+- [ ] Puis : désactiver l'inscription, supprimer /studio/activation, tester l'accès admin

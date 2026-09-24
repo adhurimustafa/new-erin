@@ -10,6 +10,10 @@ import NotFound from "./pages/NotFound";
 import Legal from "./pages/Legal";
 import Privacy from "./pages/Privacy";
 import { LanguageProvider } from "./i18n";
+import { lazy, Suspense } from "react";
+
+// Private Studio: loaded in its own chunk so the public site stays light.
+const StudioApp = lazy(() => import("./studio/StudioApp"));
 
 const queryClient = new QueryClient();
 
@@ -26,6 +30,7 @@ const App = () => (
           <Route path="/merci" element={<ThankYou />} />
           <Route path="/mentions-legales" element={<Legal />} />
           <Route path="/confidentialite" element={<Privacy />} />
+          <Route path="/studio/*" element={<Suspense fallback={null}><StudioApp /></Suspense>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

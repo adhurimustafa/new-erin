@@ -1,11 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { LayoutDashboard, Users, FolderKanban, Images, LogOut, ExternalLink } from "lucide-react";
+import { Sparkles, LayoutDashboard, Users, FolderKanban, Images, LogOut, ExternalLink } from "lucide-react";
 import logo from "@/assets/logo-tadam-header.png";
 import { Button } from "@/components/ui/button";
 import { useStudioAuth } from "./auth";
 
 const links = [
   { to: "/studio", label: "Tableau de bord", icon: LayoutDashboard, end: true },
+  { to: "/studio/nouveau-site", label: "Nouveau site", icon: Sparkles },
   { to: "/studio/clients", label: "Clients", icon: Users },
   { to: "/studio/projets", label: "Projets", icon: FolderKanban },
 ];

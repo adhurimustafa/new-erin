@@ -13,8 +13,13 @@ import { EmptyState, ErrorLine, Loading } from "../components/Bits";
 const REVIEW = STEPS.length; // wizard index of the review screen
 type SaveState = "idle" | "saving" | "saved" | "error";
 
-export default function BriefWizard() {
+/** Remount per brief so switching versions never reuses previous answers. */
+export default function BriefWizardRoute() {
   const { id } = useParams();
+  return <BriefWizard key={id} id={id} />;
+}
+
+function BriefWizard({ id }: { id?: string }) {
   const nav = useNavigate();
   const { data: brief, isLoading, error, refetch } = useBrief(id);
   const validate = useValidateBrief();

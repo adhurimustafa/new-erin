@@ -4,7 +4,7 @@ import { ArrowLeft, Pencil } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { LANGUAGES, SECTORS, formatDate, useClients, useDeleteProject, useProject, useSaveProject } from "../data";
+import { LANGUAGES, SECTORS, formatDate, useBriefs, useClients, useCreateBriefDraft, useDeleteProject, useProject, useSaveProject } from "../data";
 import { ProjectForm } from "../components/ProjectForm";
 import { ConfirmDelete } from "../components/ConfirmDelete";
 import { EmptyState, ErrorLine, Loading, StatusBadge } from "../components/Bits";
@@ -17,6 +17,8 @@ export default function ProjectDetail() {
   const save = useSaveProject();
   const del = useDeleteProject();
   const [editing, setEditing] = useState(false);
+  const { data: briefs } = useBriefs(id);
+  const createDraft = useCreateBriefDraft();
 
   if (isLoading) return <div className="studio-page"><Loading /></div>;
   if (error) return <div className="studio-page"><ErrorLine error={error} /></div>;
@@ -46,6 +48,31 @@ export default function ProjectDetail() {
           <div><dt>Créé le</dt><dd>{formatDate(project.created_at)}</dd></div>
           <div><dt>Dernière modification</dt><dd>{formatDate(project.updated_at)}</dd></div>
         </dl>
+      </section>
+
+
+      <section aria-labelledby="briefs-title">
+        <div className="studio-head-row studio-section-head">
+          <h2 id="briefs-title" className="studio-h2">Brief</h2>
+          {!briefs?.some(b => b.status === "draft") && (
+            <Button variant="outline" disabled={createDraft.isPending} onClick={() => {
+              const last = briefs?.[0];
+              createDraft.mutate({ projectId: project.id, sector: project.sector, data: (last?.data as Record<string, unknown>) ?? { business_name: project.clients?.company_name ?? "", languages: project.languages } },
+                { onSuccess: b => nav(`/studio/briefs/${b.id}`), onError: e => toast.error(e.message) });
+            }}>{briefs?.length ? "Nouvelle version du brief" : "Démarrer le brief"}</Button>
+          )}
+        </div>
+        {briefs?.length ? (
+          <ul className="studio-list">
+            {briefs.map(b => (
+              <li key={b.id}><Link to={`/studio/briefs/${b.id}`} className="studio-row">
+                <span className="studio-row-main"><span className="studio-row-title">Version {b.version}</span>
+                  <span className="studio-row-meta">{b.status === "validated" ? `Validée le ${formatDate(b.validated_at ?? b.updated_at)}` : `Brouillon · modifié le ${formatDate(b.updated_at)}`}</span></span>
+                <span className={`studio-badge ${b.status === "validated" ? "status-ready" : "status-draft"}`}>{b.status === "validated" ? "Validé" : "Brouillon — reprendre"}</span>
+              </Link></li>
+            ))}
+          </ul>
+        ) : <EmptyState title="Aucun brief" text="Le brief rassemble les informations nécessaires à la création du site." />}
       </section>
 
       <section className="studio-panel" aria-labelledby="desc">

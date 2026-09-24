@@ -8,6 +8,8 @@ import Clients from "./pages/Clients";
 import ClientDetail from "./pages/ClientDetail";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
+import NewSite from "./pages/NewSite";
+import BriefWizard from "./pages/BriefWizard";
 import "./studio.css";
 
 export default function StudioApp() {
@@ -21,6 +23,8 @@ export default function StudioApp() {
           <Route path="clients/:id" element={<ClientDetail />} />
           <Route path="projets" element={<Projects />} />
           <Route path="projets/:id" element={<ProjectDetail />} />
+          <Route path="nouveau-site" element={<NewSite />} />
+          <Route path="briefs/:id" element={<BriefWizard />} />
         </Route>
         <Route path="*" element={<Navigate to="/studio" replace />} />
       </Routes>

@@ -9,8 +9,8 @@ export type ProjectStatus = Project["status"];
 export type ProjectWithClient = Project & { clients: { id: string; company_name: string } | null };
 
 export const SECTORS: Record<string, string> = {
-  restaurant: "Restaurant", hotel: "Hôtel", real_estate: "Immobilier", barber_salon: "Barber / Salon",
-  beauty: "Beauté", fitness: "Fitness", local_shop: "Commerce local", artisan: "Artisan",
+  restaurant: "Restaurant", hotel: "Hôtel / Hébergement", real_estate: "Immobilier", barber_salon: "Barber / Salon",
+  beauty: "Beauté", fitness: "Fitness", local_shop: "Commerce local", artisan: "Artisan / BTP",
   professional_services: "Services professionnels", association: "Association", ecommerce: "E-commerce", other: "Autre",
 };
 export const STATUSES: Record<ProjectStatus, string> = {
@@ -114,3 +114,66 @@ export function useDeleteProject() {
 }
 
 export const formatDate = (iso: string) => new Date(iso).toLocaleString("fr-FR", { dateStyle: "medium", timeStyle: "short" });
+
+// ---- Briefs (Lot 3) ----
+export type Brief = Tables<"project_briefs">;
+export type BriefWithProject = Brief & { projects: { id: string; name: string; client_id: string; clients: { id: string; company_name: string } | null } | null };
+
+export function useBriefs(projectId?: string) {
+  return useQuery({ queryKey: ["briefs", projectId], enabled: !!projectId, queryFn: async () => {
+    const { data, error } = await supabase.from("project_briefs").select("*").eq("project_id", projectId!).order("version", { ascending: false });
+    fail(error); return data ?? [];
+  } });
+}
+export function useBrief(id?: string) {
+  return useQuery({ queryKey: ["brief", id], enabled: !!id, queryFn: async () => {
+    const { data, error } = await supabase.from("project_briefs").select("*, projects(id, name, client_id, clients(id, company_name))").eq("id", id!).maybeSingle();
+    fail(error); return data as BriefWithProject | null;
+  } });
+}
+export function useDraftBriefs() {
+  return useQuery({ queryKey: ["briefs", "drafts"], queryFn: async () => {
+    const { data, error } = await supabase.from("project_briefs").select("*, projects(id, name, client_id, clients(id, company_name))").eq("status", "draft").order("updated_at", { ascending: false });
+    fail(error); return (data ?? []) as BriefWithProject[];
+  } });
+}
+
+/** Creates a new draft version for a project, optionally starting from given answers. */
+export async function createBriefDraft(projectId: string, sector: string, data: Record<string, unknown>) {
+  const { data: last, error: e1 } = await supabase.from("project_briefs").select("version").eq("project_id", projectId).order("version", { ascending: false }).limit(1);
+  fail(e1);
+  const version = (last?.[0]?.version ?? 0) + 1;
+  const { data: row, error } = await supabase.from("project_briefs").insert({ project_id: projectId, sector, version, data: data as never, current_step: 0 }).select().single();
+  if (error?.code === "23505") throw new Error("Un brouillon existe déjà pour ce projet : reprenez-le depuis la fiche projet.");
+  fail(error); return row as Brief;
+}
+
+export function useCreateBriefDraft() {
+  const qc = useQueryClient();
+  return useMutation({ mutationFn: (a: { projectId: string; sector: string; data: Record<string, unknown> }) => createBriefDraft(a.projectId, a.sector, a.data),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["briefs"] }) });
+}
+
+export async function saveBriefDraft(id: string, patch: { data?: Record<string, unknown>; current_step?: number; sector?: string }) {
+  const { error } = await supabase.from("project_briefs").update(patch as never).eq("id", id).eq("status", "draft");
+  fail(error);
+}
+
+export function useValidateBrief() {
+  const qc = useQueryClient();
+  return useMutation({ mutationFn: async ({ id, data }: { id: string; data: Record<string, unknown> }) => {
+    const { error } = await supabase.from("project_briefs").update({ data: data as never, status: "validated" }).eq("id", id).eq("status", "draft");
+    fail(error);
+  }, onSuccess: () => Promise.all(["brief", "briefs", "projects", "project"].map(k => qc.invalidateQueries({ queryKey: [k] }))) });
+}
+
+export function useDeleteBrief() {
+  const qc = useQueryClient();
+  return useMutation({ mutationFn: async (id: string) => { const { error } = await supabase.from("project_briefs").delete().eq("id", id); fail(error); },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["briefs"] }) });
+}
+
+export async function updateProjectSector(projectId: string, sector: string) {
+  const { error } = await supabase.from("projects").update({ sector }).eq("id", projectId);
+  fail(error);
+}

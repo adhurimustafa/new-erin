@@ -22,3 +22,11 @@
 - [x] Pages /studio protégées, connexion/déconnexion, tableau de bord réel
 - [x] Compte admin créé et confirmé
 - [x] Inscription fermée, /studio/activation supprimée, accès admin testé
+
+## Studio — Lot 2 (Clients et Projets)
+
+- [x] Tables clients/projets avec accès réservé au propriétaire administrateur
+- [x] Clients : créer, modifier, fiche, recherche, suppression protégée
+- [x] Projets : créer (client obligatoire), modifier, fiche, secteur, langues, statut
+- [x] Tableau de bord avec compteurs réels et états vides
+- [x] Tests complets, données de test supprimées

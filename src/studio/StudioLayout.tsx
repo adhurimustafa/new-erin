@@ -4,11 +4,12 @@ import logo from "@/assets/logo-tadam-header.png";
 import { Button } from "@/components/ui/button";
 import { useStudioAuth } from "./auth";
 
-const upcoming = [
-  { label: "Clients", icon: Users },
-  { label: "Projets", icon: FolderKanban },
-  { label: "Assets", icon: Images },
+const links = [
+  { to: "/studio", label: "Tableau de bord", icon: LayoutDashboard, end: true },
+  { to: "/studio/clients", label: "Clients", icon: Users },
+  { to: "/studio/projets", label: "Projets", icon: FolderKanban },
 ];
+const upcoming = [{ label: "Assets", icon: Images }];
 
 export function StudioLayout() {
   const { session, signOut } = useStudioAuth();
@@ -17,9 +18,11 @@ export function StudioLayout() {
       <aside className="studio-sidebar" aria-label="Navigation du Studio">
         <div className="studio-brand"><img src={logo} alt="TADAM" width="905" height="602" /><span>Studio</span></div>
         <nav className="studio-nav">
-          <NavLink to="/studio" end className={({ isActive }) => `studio-nav-link${isActive ? " is-active" : ""}`}>
-            <LayoutDashboard aria-hidden="true" />Tableau de bord
-          </NavLink>
+          {links.map(({ to, label, icon: Icon, end }) => (
+            <NavLink key={to} to={to} end={end} className={({ isActive }) => `studio-nav-link${isActive ? " is-active" : ""}`}>
+              <Icon aria-hidden="true" />{label}
+            </NavLink>
+          ))}
           {upcoming.map(({ label, icon: Icon }) => (
             <span key={label} className="studio-nav-link is-disabled" aria-disabled="true">
               <Icon aria-hidden="true" />{label}<em>Prévu</em>

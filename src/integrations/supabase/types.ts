@@ -14,6 +14,98 @@ export type Database = {
   }
   public: {
     Tables: {
+      clients: {
+        Row: {
+          company_name: string
+          contact_name: string | null
+          created_at: string
+          email: string | null
+          id: string
+          location: string | null
+          notes: string | null
+          owner_id: string
+          phone: string | null
+          socials: string | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          company_name: string
+          contact_name?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          location?: string | null
+          notes?: string | null
+          owner_id?: string
+          phone?: string | null
+          socials?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          company_name?: string
+          contact_name?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          location?: string | null
+          notes?: string | null
+          owner_id?: string
+          phone?: string | null
+          socials?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          client_id: string
+          created_at: string
+          description: string | null
+          id: string
+          languages: string[]
+          name: string
+          owner_id: string
+          sector: string
+          status: Database["public"]["Enums"]["project_status"]
+          updated_at: string
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          languages?: string[]
+          name: string
+          owner_id?: string
+          sector?: string
+          status?: Database["public"]["Enums"]["project_status"]
+          updated_at?: string
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          languages?: string[]
+          name?: string
+          owner_id?: string
+          sector?: string
+          status?: Database["public"]["Enums"]["project_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projects_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       studio_admin_allowlist: {
         Row: {
           email: string
@@ -63,6 +155,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "member" | "client"
+      project_status: "draft" | "preparing" | "ready" | "published"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -191,6 +284,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "member", "client"],
+      project_status: ["draft", "preparing", "ready", "published"],
     },
   },
 } as const

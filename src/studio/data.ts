@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import type { Tables } from "@/integrations/supabase/types";
+import type { Tables, TablesInsert } from "@/integrations/supabase/types";
 
 export type Client = Tables<"clients">;
 export type Project = Tables<"projects">;
@@ -102,7 +102,7 @@ export function useSaveProject() {
   const inv = useInvalidate();
   return useMutation({ mutationFn: async ({ id, values }: { id?: string; values: ProjectInput }) => {
     const p = projectSchema.parse(values);
-    const row = { name: p.name!.trim(), client_id: p.client_id!, sector: p.sector!, languages: p.languages!, status: p.status!, description: p.description?.trim() || null };
+    const row: TablesInsert<"projects"> = { name: p.name!.trim(), client_id: p.client_id!, sector: p.sector!, languages: p.languages!, status: p.status!, description: p.description?.trim() || null };
     const res = id ? await supabase.from("projects").update(row).eq("id", id).select().single()
       : await supabase.from("projects").insert(row).select().single();
     fail(res.error); return res.data as Project;

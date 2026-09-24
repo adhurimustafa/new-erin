@@ -59,6 +59,59 @@ export type Database = {
         }
         Relationships: []
       }
+      project_briefs: {
+        Row: {
+          created_at: string
+          current_step: number
+          data: Json
+          id: string
+          owner_id: string
+          project_id: string
+          schema_version: number
+          sector: string
+          status: Database["public"]["Enums"]["brief_status"]
+          updated_at: string
+          validated_at: string | null
+          version: number
+        }
+        Insert: {
+          created_at?: string
+          current_step?: number
+          data?: Json
+          id?: string
+          owner_id?: string
+          project_id: string
+          schema_version?: number
+          sector: string
+          status?: Database["public"]["Enums"]["brief_status"]
+          updated_at?: string
+          validated_at?: string | null
+          version: number
+        }
+        Update: {
+          created_at?: string
+          current_step?: number
+          data?: Json
+          id?: string
+          owner_id?: string
+          project_id?: string
+          schema_version?: number
+          sector?: string
+          status?: Database["public"]["Enums"]["brief_status"]
+          updated_at?: string
+          validated_at?: string | null
+          version?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_briefs_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projects: {
         Row: {
           client_id: string
@@ -155,6 +208,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "member" | "client"
+      brief_status: "draft" | "validated"
       project_status: "draft" | "preparing" | "ready" | "published"
     }
     CompositeTypes: {
@@ -284,6 +338,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "member", "client"],
+      brief_status: ["draft", "validated"],
       project_status: ["draft", "preparing", "ready", "published"],
     },
   },

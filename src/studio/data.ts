@@ -101,8 +101,8 @@ export function useDeleteClient() {
 export function useSaveProject() {
   const inv = useInvalidate();
   return useMutation({ mutationFn: async ({ id, values }: { id?: string; values: ProjectInput }) => {
-    const parsed = projectSchema.parse(values);
-    const row = { ...parsed, description: parsed.description?.trim() || null, name: parsed.name.trim() };
+    const p = projectSchema.parse(values);
+    const row = { name: p.name!.trim(), client_id: p.client_id!, sector: p.sector!, languages: p.languages!, status: p.status!, description: p.description?.trim() || null };
     const res = id ? await supabase.from("projects").update(row).eq("id", id).select().single()
       : await supabase.from("projects").insert(row).select().single();
     fail(res.error); return res.data as Project;

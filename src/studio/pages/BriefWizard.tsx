@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, CheckCircle2, Lock } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { SECTORS, createBriefDraft, formatDate, saveBriefDraft, updateProjectSector, useBrief, useValidateBrief } from "../data";
+import { SECTORS, createBriefDraft, formatDate, saveBriefDraft, updateProjectSector, useBrief, useBriefs, useValidateBrief } from "../data";
 import { STEPS, isFilled, visibleFields, type BriefData, type BriefValue } from "../brief/config";
 import { BriefFieldInput } from "../brief/BriefFieldInput";
 import { BriefSummary } from "../brief/BriefSummary";
@@ -23,6 +23,8 @@ function BriefWizard({ id }: { id?: string }) {
   const nav = useNavigate();
   const { data: brief, isLoading, error, refetch } = useBrief(id);
   const validate = useValidateBrief();
+  const { data: siblings } = useBriefs(brief?.project_id);
+  const openDraft = siblings?.find(b => b.status === "draft" && b.id !== id);
   const [data, setData] = useState<BriefData | null>(null);
   const [sector, setSector] = useState("other");
   const [step, setStep] = useState(0);
@@ -122,7 +124,9 @@ function BriefWizard({ id }: { id?: string }) {
         {header}
         <section className="studio-status"><Lock aria-hidden="true" /><div><p className="studio-status-title">Version figée</p><p className="studio-muted">Validée le {brief.validated_at ? formatDate(brief.validated_at) : "—"}. Pour modifier, créez une nouvelle version : celle-ci reste conservée.</p></div></section>
         <BriefSummary data={data} sector={sector} />
-        <div className="studio-form-actions"><Button onClick={newVersion}>Créer une nouvelle version</Button></div>
+        <div className="studio-form-actions">{openDraft
+          ? <Button asChild><Link to={`/studio/briefs/${openDraft.id}`}>Reprendre le brouillon (version {openDraft.version})</Link></Button>
+          : <Button onClick={newVersion}>Créer une nouvelle version</Button>}</div>
       </div>
     );
   }

@@ -3,7 +3,6 @@ import { StudioAuthProvider } from "./auth";
 import { RequireAdmin } from "./RequireAdmin";
 import { StudioLayout } from "./StudioLayout";
 import Login from "./pages/Login";
-import Activation from "./pages/Activation";
 import Dashboard from "./pages/Dashboard";
 import "./studio.css";
 
@@ -12,7 +11,6 @@ export default function StudioApp() {
     <StudioAuthProvider>
       <Routes>
         <Route path="connexion" element={<Login />} />
-        <Route path="activation" element={<Activation />} />
         <Route element={<RequireAdmin><StudioLayout /></RequireAdmin>}>
           <Route index element={<Dashboard />} />
         </Route>

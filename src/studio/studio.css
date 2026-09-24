@@ -39,8 +39,8 @@ a.studio-nav-link:hover { color: hsl(var(--foreground)); background: hsl(var(--m
 .studio-state { align-self: flex-start; margin-top: .3rem; font-size: .72rem; padding: .15rem .55rem; border: 1px solid hsl(var(--border)); border-radius: 999px; color: hsl(var(--muted-foreground)); }
 
 @media (max-width: 820px) {
-  .studio-shell { grid-template-columns: 1fr; }
-  .studio-sidebar { position: static; height: auto; flex-direction: column; gap: 1rem; padding: 1rem 1.25rem; border-right: 0; border-bottom: 1px solid hsl(var(--border) / .6); }
+  .studio-shell { grid-template-columns: minmax(0, 1fr); align-content: start; }
+  .studio-sidebar { position: static; height: auto; min-width: 0; flex-direction: column; gap: 1rem; padding: 1rem 1.25rem; border-right: 0; border-bottom: 1px solid hsl(var(--border) / .6); }
   .studio-nav { flex-direction: row; overflow-x: auto; gap: .35rem; scrollbar-width: none; }
   .studio-nav-link { white-space: nowrap; }
   .studio-nav-link em { display: none; }

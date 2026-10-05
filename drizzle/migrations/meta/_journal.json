@@ -50,6 +50,13 @@
       "when": 1791243069870,
       "tag": "0006_tmp_test_structure_failure",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1791243088504,
+      "tag": "0007_drop_tmp_test_structure_failure",
+      "breakpoints": true
     }
   ]
 }

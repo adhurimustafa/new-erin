@@ -291,6 +291,75 @@ export type Database = {
           },
         ]
       }
+      site_structures: {
+        Row: {
+          archived_at: string | null
+          assets_fingerprint: string
+          assets_snapshot: Json
+          brief_id: string
+          created_at: string
+          generated: Json
+          id: string
+          owner_id: string
+          project_id: string
+          rules_version: number
+          status: Database["public"]["Enums"]["structure_status"]
+          structure: Json
+          updated_at: string
+          validated_at: string | null
+          version: number
+        }
+        Insert: {
+          archived_at?: string | null
+          assets_fingerprint: string
+          assets_snapshot?: Json
+          brief_id: string
+          created_at?: string
+          generated: Json
+          id?: string
+          owner_id?: string
+          project_id: string
+          rules_version: number
+          status?: Database["public"]["Enums"]["structure_status"]
+          structure: Json
+          updated_at?: string
+          validated_at?: string | null
+          version: number
+        }
+        Update: {
+          archived_at?: string | null
+          assets_fingerprint?: string
+          assets_snapshot?: Json
+          brief_id?: string
+          created_at?: string
+          generated?: Json
+          id?: string
+          owner_id?: string
+          project_id?: string
+          rules_version?: number
+          status?: Database["public"]["Enums"]["structure_status"]
+          structure?: Json
+          updated_at?: string
+          validated_at?: string | null
+          version?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "site_structures_brief_id_fkey"
+            columns: ["brief_id"]
+            isOneToOne: false
+            referencedRelation: "project_briefs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "site_structures_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       studio_admin_allowlist: {
         Row: {
           email: string
@@ -336,14 +405,29 @@ export type Database = {
           size: number
         }[]
       }
+      check_site_structure: { Args: { _a: Json; _g: Json }; Returns: undefined }
       claim_studio_admin: { Args: never; Returns: boolean }
       create_brief_version: { Args: { _source: string }; Returns: Json }
+      create_site_structure: {
+        Args: {
+          _asset_keys: string[]
+          _brief: string
+          _generated: Json
+          _replace?: string
+          _rules_version: number
+        }
+        Returns: Json
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
         }
         Returns: boolean
+      }
+      project_assets_fingerprint: {
+        Args: { _project: string }
+        Returns: string
       }
     }
     Enums: {
@@ -359,6 +443,7 @@ export type Database = {
       asset_status: "pending" | "ready" | "deleting" | "removed"
       brief_status: "draft" | "validated"
       project_status: "draft" | "preparing" | "ready" | "published"
+      structure_status: "draft" | "validated" | "archived"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -499,6 +584,7 @@ export const Constants = {
       asset_status: ["pending", "ready", "deleting", "removed"],
       brief_status: ["draft", "validated"],
       project_status: ["draft", "preparing", "ready", "published"],
+      structure_status: ["draft", "validated", "archived"],
     },
   },
 } as const

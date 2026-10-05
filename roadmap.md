@@ -37,3 +37,10 @@
 - [x] Envoi multiple/glisser-déposer/progression, validation serveur du contenu réel
 - [x] Suppressions fiables (fichier, projet), nettoyage à l'ouverture
 - [x] Tests serveur, navigateur, responsive ; données de test supprimées
+
+## Studio — Lot 5 (Structure recommandée) — livré, en attente de validation
+
+- [x] Règles par secteur (Restaurant, Artisan/BTP détaillés ; autres secteurs courts ; socle commun)
+- [x] Proposition liée à la version exacte du brief validé, relevé figé des fichiers prêts
+- [x] Ajustements limités, enregistrement, validation figée, recalcul avec archivage transactionnel
+- [x] Tests serveur, permissions, échec contrôlé, parcours navigateur, responsive ; données de test supprimées

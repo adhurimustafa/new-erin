@@ -201,3 +201,19 @@ fieldset.studio-field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .asset-link { display: flex; align-items: center; gap: .5rem; padding: .5rem .8rem .7rem; font-size: .82rem; border-top: 1px solid hsl(var(--border) / .4); }
 .asset-link input { accent-color: hsl(var(--accent)); }
 .asset-project-pick { max-width: 28rem; }
+
+/* Lot 5 — structure recommandée */
+.structure-inline { display: inline-flex; align-items: center; gap: .5rem; font-size: .85rem; color: hsl(var(--muted-foreground)); }
+.structure-warn { display: flex; flex-direction: column; gap: .6rem; align-items: flex-start; padding: 1rem 1.25rem; border: 1px solid hsl(var(--gold) / .5); border-radius: .9rem; background: hsl(var(--gold) / .06); font-size: .9rem; }
+.structure-pages { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; counter-reset: page; }
+.structure-page { padding: 1rem; border: 1px solid hsl(var(--border) / .7); border-radius: .9rem; background: hsl(var(--card) / .4); min-width: 0; }
+.structure-page-head, .structure-section-head { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.structure-page-head input { flex: 1 1 12rem; max-width: 22rem; }
+.structure-moves { display: inline-flex; margin-left: auto; }
+.structure-sections { list-style: none; margin: .75rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+.structure-section { padding: .7rem .85rem; border-left: 2px solid hsl(var(--accent) / .5); background: hsl(var(--muted) / .25); border-radius: .5rem; min-width: 0; }
+.structure-section.is-hidden { opacity: .55; border-left-color: hsl(var(--border)); }
+.structure-needs { margin: .4rem 0 0; padding-left: 1.1rem; font-size: .85rem; color: hsl(var(--muted-foreground)); display: flex; flex-direction: column; gap: .2rem; overflow-wrap: anywhere; }
+.structure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1rem; }
+.structure-bar { position: sticky; bottom: .75rem; z-index: 5; justify-content: flex-end; flex-wrap: wrap; padding: .75rem; border: 1px solid hsl(var(--border)); border-radius: .9rem; background: hsl(var(--background) / .92); backdrop-filter: blur(8px); }
+.studio-h3 { font-size: 1rem; font-weight: 600; margin: .75rem 0 .25rem; }

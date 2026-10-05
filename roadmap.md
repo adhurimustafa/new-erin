@@ -31,7 +31,7 @@
 - [x] Tableau de bord avec compteurs réels et états vides
 - [x] Tests complets, données de test supprimées
 
-## Studio — Lot 4 (Médiathèque privée)
+## Studio — Lot 4 (Médiathèque privée) — validé
 
 - [x] Stockage privé, fiches fichiers, références explicites brief→fichier
 - [x] Envoi multiple/glisser-déposer/progression, validation serveur du contenu réel

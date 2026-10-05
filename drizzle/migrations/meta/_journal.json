@@ -15,6 +15,27 @@
       "when": 1791241302686,
       "tag": "0001_brief_ref_snapshots",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791241641456,
+      "tag": "0002_create_brief_version_rpc",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1791241695452,
+      "tag": "0003_tmp_test_ref_copy_failure",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1791241765898,
+      "tag": "0004_drop_tmp_test_ref_copy_failure",
+      "breakpoints": true
     }
   ]
 }

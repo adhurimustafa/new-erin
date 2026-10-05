@@ -337,6 +337,7 @@ export type Database = {
         }[]
       }
       claim_studio_admin: { Args: never; Returns: boolean }
+      create_brief_version: { Args: { _source: string }; Returns: Json }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

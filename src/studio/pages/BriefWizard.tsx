@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, CheckCircle2, Lock } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { SECTORS, createBriefDraft, formatDate, saveBriefDraft, updateProjectSector, useBrief, useBriefs, useValidateBrief } from "../data";
+import { SECTORS, createBriefVersion, formatDate, saveBriefDraft, updateProjectSector, useBrief, useBriefs, useValidateBrief } from "../data";
 import { STEPS, isFilled, visibleFields, type BriefData, type BriefValue } from "../brief/config";
 import { BriefFieldInput } from "../brief/BriefFieldInput";
 import { BriefSummary } from "../brief/BriefSummary";
@@ -94,7 +94,11 @@ function BriefWizard({ id }: { id?: string }) {
 
   const newVersion = async () => {
     if (!brief?.projects) return;
-    try { const b = await createBriefDraft(brief.projects.id, brief.sector, brief.data as Record<string, unknown>, brief.id); nav(`/studio/briefs/${b.id}`); }
+    try {
+      const r = await createBriefVersion(brief.id);
+      toast.success(`Version ${r.version} créée : ${r.copied} fichier(s) repris${r.skipped ? `, ${r.skipped} fichier(s) retiré(s) depuis non repris` : ""}.`);
+      nav(`/studio/briefs/${r.id}`);
+    }
     catch (e) { toast.error((e as Error).message); }
   };
 

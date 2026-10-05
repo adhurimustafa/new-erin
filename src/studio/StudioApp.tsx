@@ -27,6 +27,7 @@ export default function StudioApp() {
           <Route path="nouveau-site" element={<NewSite />} />
           <Route path="briefs/:id" element={<BriefWizard />} />
           <Route path="assets" element={<Assets />} />
+          <Route path="structures/:id" element={<StructurePage />} />
         </Route>
         <Route path="*" element={<Navigate to="/studio" replace />} />
       </Routes>

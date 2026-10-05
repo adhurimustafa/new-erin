@@ -9,6 +9,7 @@ import { ProjectForm } from "../components/ProjectForm";
 import { ConfirmDelete } from "../components/ConfirmDelete";
 import { EmptyState, ErrorLine, Loading, StatusBadge } from "../components/Bits";
 import { AssetLibrary } from "../components/AssetLibrary";
+import { StructurePanel } from "../structure/StructurePanel";
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -78,6 +79,8 @@ export default function ProjectDetail() {
           </ul>
         ) : <EmptyState title="Aucun brief" text="Le brief rassemble les informations nécessaires à la création du site." />}
       </section>
+
+      <StructurePanel projectId={project.id} locked={project.deleting} />
 
       <AssetLibrary projectId={project.id} locked={project.deleting} />
 

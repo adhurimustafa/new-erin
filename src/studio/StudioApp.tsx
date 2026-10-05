@@ -10,6 +10,7 @@ import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
 import NewSite from "./pages/NewSite";
 import BriefWizard from "./pages/BriefWizard";
+import Assets from "./pages/Assets";
 import "./studio.css";
 
 export default function StudioApp() {
@@ -25,6 +26,7 @@ export default function StudioApp() {
           <Route path="projets/:id" element={<ProjectDetail />} />
           <Route path="nouveau-site" element={<NewSite />} />
           <Route path="briefs/:id" element={<BriefWizard />} />
+          <Route path="assets" element={<Assets />} />
         </Route>
         <Route path="*" element={<Navigate to="/studio" replace />} />
       </Routes>

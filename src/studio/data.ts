@@ -108,9 +108,13 @@ export function useSaveProject() {
     fail(res.error); return res.data as Project;
   }, onSuccess: inv });
 }
+/** Server-side deletion: locks the project, removes every stored file, then the records. Safe to re-run. */
 export function useDeleteProject() {
   const inv = useInvalidate();
-  return useMutation({ mutationFn: async (id: string) => { const { error } = await supabase.from("projects").delete().eq("id", id); fail(error); }, onSuccess: inv });
+  return useMutation({ mutationFn: async (id: string) => {
+    const { data, error } = await supabase.functions.invoke("studio-assets", { body: { action: "delete_project", project_id: id } });
+    if (error || !data?.ok) throw new Error("Suppression incomplète : relancez-la, elle reprendra là où elle s’est arrêtée.");
+  }, onSettled: inv });
 }
 
 export const formatDate = (iso: string) => new Date(iso).toLocaleString("fr-FR", { dateStyle: "medium", timeStyle: "short" });

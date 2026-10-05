@@ -8,6 +8,7 @@ import { STEPS, isFilled, visibleFields, type BriefData, type BriefValue } from 
 import { BriefFieldInput } from "../brief/BriefFieldInput";
 import { BriefSummary } from "../brief/BriefSummary";
 import { BriefProgress } from "../brief/BriefProgress";
+import { BriefAssetRefs } from "../brief/BriefAssetRefs";
 import { EmptyState, ErrorLine, Loading } from "../components/Bits";
 
 const REVIEW = STEPS.length; // wizard index of the review screen
@@ -124,6 +125,7 @@ function BriefWizard({ id }: { id?: string }) {
         {header}
         <section className="studio-status"><Lock aria-hidden="true" /><div><p className="studio-status-title">Version figée</p><p className="studio-muted">Validée le {brief.validated_at ? formatDate(brief.validated_at) : "—"}. Pour modifier, créez une nouvelle version : celle-ci reste conservée.</p></div></section>
         <BriefSummary data={data} sector={sector} />
+        <BriefAssetRefs briefId={brief.id} />
         <div className="studio-form-actions">{openDraft
           ? <Button asChild><Link to={`/studio/briefs/${openDraft.id}`}>Reprendre le brouillon (version {openDraft.version})</Link></Button>
           : <Button onClick={newVersion}>Créer une nouvelle version</Button>}</div>

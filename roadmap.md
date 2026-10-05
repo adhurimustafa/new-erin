@@ -30,3 +30,10 @@
 - [x] Projets : créer (client obligatoire), modifier, fiche, secteur, langues, statut
 - [x] Tableau de bord avec compteurs réels et états vides
 - [x] Tests complets, données de test supprimées
+
+## Studio — Lot 4 (Médiathèque privée)
+
+- [x] Stockage privé, fiches fichiers, références explicites brief→fichier
+- [x] Envoi multiple/glisser-déposer/progression, validation serveur du contenu réel
+- [x] Suppressions fiables (fichier, projet), nettoyage à l'ouverture
+- [x] Tests serveur, navigateur, responsive ; données de test supprimées

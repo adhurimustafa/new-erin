@@ -174,3 +174,30 @@ fieldset.studio-field { border: 0; padding: 0; margin: 0; min-width: 0; }
   .brief-steps .is-current .brief-step-label { display: inline; }
   .brief-nav > * { flex: 1 1 auto; }
 }
+/* Lot 4 — médiathèque */
+.studio-assets { display: flex; flex-direction: column; gap: .9rem; }
+.asset-drop { display: flex; flex-direction: column; align-items: center; gap: .6rem; padding: 1.6rem 1rem; border: 1.5px dashed hsl(var(--border)); border-radius: 1rem; text-align: center; background: hsl(var(--card) / .35); }
+.asset-drop svg { width: 2rem; height: 2rem; color: hsl(var(--accent)); }
+.asset-drop.is-drag { border-color: hsl(var(--accent)); background: hsl(var(--accent) / .08); }
+.asset-uploads { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+.asset-upload { padding: .6rem .8rem; border: 1px solid hsl(var(--border) / .6); border-radius: .7rem; display: flex; flex-direction: column; gap: .35rem; }
+.asset-upload-top { display: flex; justify-content: space-between; gap: .75rem; font-size: .88rem; }
+.asset-upload-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.asset-upload progress { width: 100%; height: .4rem; accent-color: hsl(var(--accent)); }
+.asset-upload.is-rejected, .asset-upload.is-error { border-color: hsl(var(--destructive) / .55); }
+.asset-upload.is-done { border-color: hsl(var(--accent) / .5); }
+.asset-upload-msg { font-size: .82rem; color: hsl(var(--muted-foreground)); margin: 0; }
+.asset-filters { display: flex; flex-wrap: wrap; gap: .75rem; }
+.studio-field-inline { display: flex; align-items: center; gap: .5rem; font-size: .88rem; }
+.asset-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .9rem; }
+.asset-card { display: flex; flex-direction: column; border: 1px solid hsl(var(--border) / .6); border-radius: .9rem; overflow: hidden; background: hsl(var(--card) / .5); min-width: 0; }
+.asset-thumb { aspect-ratio: 4 / 3; display: grid; place-items: center; background: hsl(var(--muted) / .35); overflow: hidden; }
+.asset-thumb img, .asset-thumb video { width: 100%; height: 100%; object-fit: cover; }
+.asset-thumb > svg { width: 2.4rem; height: 2.4rem; color: hsl(var(--muted-foreground)); }
+.asset-video-fail { display: flex; flex-direction: column; align-items: center; gap: .4rem; padding: .75rem; font-size: .8rem; text-align: center; color: hsl(var(--muted-foreground)); }
+.asset-body { padding: .7rem .8rem .2rem; min-width: 0; }
+.asset-label { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0; }
+.asset-actions { display: flex; flex-wrap: wrap; gap: .25rem; padding: .3rem .5rem .5rem; }
+.asset-link { display: flex; align-items: center; gap: .5rem; padding: .5rem .8rem .7rem; font-size: .82rem; border-top: 1px solid hsl(var(--border) / .4); }
+.asset-link input { accent-color: hsl(var(--accent)); }
+.asset-project-pick { max-width: 28rem; }

@@ -43,6 +43,13 @@
       "when": 1791242724820,
       "tag": "0005_site_structures",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1791243069870,
+      "tag": "0006_tmp_test_structure_failure",
+      "breakpoints": true
     }
   ]
 }

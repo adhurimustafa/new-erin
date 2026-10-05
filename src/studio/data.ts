@@ -143,13 +143,20 @@ export function useDraftBriefs() {
 }
 
 /** Creates a new draft version for a project, optionally starting from given answers. */
-export async function createBriefDraft(projectId: string, sector: string, data: Record<string, unknown>) {
+export async function createBriefDraft(projectId: string, sector: string, data: Record<string, unknown>, sourceBriefId?: string) {
   const { data: last, error: e1 } = await supabase.from("project_briefs").select("version").eq("project_id", projectId).order("version", { ascending: false }).limit(1);
   fail(e1);
   const version = (last?.[0]?.version ?? 0) + 1;
   const { data: row, error } = await supabase.from("project_briefs").insert({ project_id: projectId, sector, version, data: data as never, current_step: 0 }).select().single();
   if (error?.code === "23505") throw new Error("Un brouillon existe déjà pour ce projet : reprenez-le depuis la fiche projet.");
-  fail(error); return row as Brief;
+  fail(error);
+  if (sourceBriefId) {
+    // Carry over references only (never the stored files); files removed since are not carried over.
+    const { data: refs, error: e2 } = await supabase.from("brief_asset_refs").select("asset_id, project_assets!inner(status)").eq("brief_id", sourceBriefId).eq("project_assets.status", "ready");
+    fail(e2);
+    if (refs?.length) fail((await supabase.from("brief_asset_refs").insert(refs.map(r => ({ brief_id: row!.id, asset_id: r.asset_id })))).error);
+  }
+  return row as Brief;
 }
 
 export function useCreateBriefDraft() {

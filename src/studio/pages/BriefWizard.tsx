@@ -94,7 +94,7 @@ function BriefWizard({ id }: { id?: string }) {
 
   const newVersion = async () => {
     if (!brief?.projects) return;
-    try { const b = await createBriefDraft(brief.projects.id, brief.sector, brief.data as Record<string, unknown>); nav(`/studio/briefs/${b.id}`); }
+    try { const b = await createBriefDraft(brief.projects.id, brief.sector, brief.data as Record<string, unknown>, brief.id); nav(`/studio/briefs/${b.id}`); }
     catch (e) { toast.error((e as Error).message); }
   };
 

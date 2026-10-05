@@ -160,8 +160,9 @@ export function useToggleRef() {
 }
 export function useBriefRefs(briefId?: string) {
   return useQuery({ queryKey: ["asset-refs", "brief", briefId], enabled: !!briefId, queryFn: async () => {
-    const { data, error } = await supabase.from("brief_asset_refs").select("created_at, project_assets(id, label, category, status, removed_at)").eq("brief_id", briefId!);
+    const { data, error } = await supabase.from("brief_asset_refs").select("asset_id, created_at, label_snapshot, category_snapshot, original_name_snapshot, project_assets(id, label, category, status, removed_at)").eq("brief_id", briefId!);
     if (error) throw new Error("Chargement des références impossible.");
-    return (data ?? []) as unknown as { created_at: string; project_assets: Pick<Asset, "id" | "label" | "category" | "status" | "removed_at"> | null }[];
+    return (data ?? []) as unknown as { asset_id: string; created_at: string; label_snapshot: string | null; category_snapshot: AssetCategory | null; original_name_snapshot: string | null;
+      project_assets: Pick<Asset, "id" | "label" | "category" | "status" | "removed_at"> | null }[];
   } });
 }

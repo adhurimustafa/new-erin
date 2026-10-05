@@ -90,7 +90,7 @@ export type UploadState = { key: string; file: File; label: string; category: As
 
 /** Uploads one file: reserve a pending slot, resumable transfer, then server validation. */
 export async function uploadAsset(projectId: string, u: UploadState, onProgress: (p: number, phase?: UploadState["phase"]) => void): Promise<string> {
-  let assetId = u.assetId; let path: string;
+  let assetId = u.assetId; let path = "";
   if (assetId) {
     const { data } = await supabase.from("project_assets").select("storage_path, status").eq("id", assetId).maybeSingle();
     if (!data || data.status !== "pending") assetId = undefined; else path = data.storage_path;

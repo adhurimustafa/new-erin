@@ -18,19 +18,34 @@ export type Database = {
         Row: {
           asset_id: string
           brief_id: string
+          category_snapshot:
+            | Database["public"]["Enums"]["asset_category"]
+            | null
           created_at: string
+          label_snapshot: string | null
+          original_name_snapshot: string | null
           owner_id: string
         }
         Insert: {
           asset_id: string
           brief_id: string
+          category_snapshot?:
+            | Database["public"]["Enums"]["asset_category"]
+            | null
           created_at?: string
+          label_snapshot?: string | null
+          original_name_snapshot?: string | null
           owner_id?: string
         }
         Update: {
           asset_id?: string
           brief_id?: string
+          category_snapshot?:
+            | Database["public"]["Enums"]["asset_category"]
+            | null
           created_at?: string
+          label_snapshot?: string | null
+          original_name_snapshot?: string | null
           owner_id?: string
         }
         Relationships: [

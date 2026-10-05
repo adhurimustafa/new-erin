@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      brief_asset_refs: {
+        Row: {
+          asset_id: string
+          brief_id: string
+          created_at: string
+          owner_id: string
+        }
+        Insert: {
+          asset_id: string
+          brief_id: string
+          created_at?: string
+          owner_id?: string
+        }
+        Update: {
+          asset_id?: string
+          brief_id?: string
+          created_at?: string
+          owner_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "brief_asset_refs_asset_id_fkey"
+            columns: ["asset_id"]
+            isOneToOne: false
+            referencedRelation: "project_assets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "brief_asset_refs_brief_id_fkey"
+            columns: ["brief_id"]
+            isOneToOne: false
+            referencedRelation: "project_briefs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       clients: {
         Row: {
           company_name: string
@@ -58,6 +94,84 @@ export type Database = {
           website?: string | null
         }
         Relationships: []
+      }
+      project_assets: {
+        Row: {
+          category: Database["public"]["Enums"]["asset_category"]
+          client_id: string
+          created_at: string
+          declared_mime: string | null
+          declared_size: number | null
+          id: string
+          kind: string | null
+          label: string
+          mime: string | null
+          original_name: string
+          owner_id: string
+          project_id: string
+          removed_at: string | null
+          size_bytes: number | null
+          status: Database["public"]["Enums"]["asset_status"]
+          storage_path: string
+          updated_at: string
+          validated_at: string | null
+        }
+        Insert: {
+          category?: Database["public"]["Enums"]["asset_category"]
+          client_id: string
+          created_at?: string
+          declared_mime?: string | null
+          declared_size?: number | null
+          id?: string
+          kind?: string | null
+          label: string
+          mime?: string | null
+          original_name: string
+          owner_id?: string
+          project_id: string
+          removed_at?: string | null
+          size_bytes?: number | null
+          status?: Database["public"]["Enums"]["asset_status"]
+          storage_path: string
+          updated_at?: string
+          validated_at?: string | null
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["asset_category"]
+          client_id?: string
+          created_at?: string
+          declared_mime?: string | null
+          declared_size?: number | null
+          id?: string
+          kind?: string | null
+          label?: string
+          mime?: string | null
+          original_name?: string
+          owner_id?: string
+          project_id?: string
+          removed_at?: string | null
+          size_bytes?: number | null
+          status?: Database["public"]["Enums"]["asset_status"]
+          storage_path?: string
+          updated_at?: string
+          validated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_assets_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "project_assets_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       project_briefs: {
         Row: {
@@ -116,6 +230,7 @@ export type Database = {
         Row: {
           client_id: string
           created_at: string
+          deleting: boolean
           description: string | null
           id: string
           languages: string[]
@@ -128,6 +243,7 @@ export type Database = {
         Insert: {
           client_id: string
           created_at?: string
+          deleting?: boolean
           description?: string | null
           id?: string
           languages?: string[]
@@ -140,6 +256,7 @@ export type Database = {
         Update: {
           client_id?: string
           created_at?: string
+          deleting?: boolean
           description?: string | null
           id?: string
           languages?: string[]
@@ -197,6 +314,13 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      asset_object_info: {
+        Args: { _path: string }
+        Returns: {
+          mimetype: string
+          size: number
+        }[]
+      }
       claim_studio_admin: { Args: never; Returns: boolean }
       has_role: {
         Args: {
@@ -208,6 +332,15 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "member" | "client"
+      asset_category:
+        | "logo"
+        | "photos"
+        | "videos"
+        | "documents"
+        | "menu_pricing"
+        | "portfolio"
+        | "other"
+      asset_status: "pending" | "ready" | "deleting" | "removed"
       brief_status: "draft" | "validated"
       project_status: "draft" | "preparing" | "ready" | "published"
     }
@@ -338,6 +471,16 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "member", "client"],
+      asset_category: [
+        "logo",
+        "photos",
+        "videos",
+        "documents",
+        "menu_pricing",
+        "portfolio",
+        "other",
+      ],
+      asset_status: ["pending", "ready", "deleting", "removed"],
       brief_status: ["draft", "validated"],
       project_status: ["draft", "preparing", "ready", "published"],
     },

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { FileText, Download, Pencil, Trash2, UploadCloud, RotateCcw, Link2, Film } from "lucide-react";

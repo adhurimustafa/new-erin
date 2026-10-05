@@ -9,8 +9,9 @@ const links = [
   { to: "/studio/nouveau-site", label: "Nouveau site", icon: Sparkles },
   { to: "/studio/clients", label: "Clients", icon: Users },
   { to: "/studio/projets", label: "Projets", icon: FolderKanban },
+  { to: "/studio/assets", label: "Assets", icon: Images },
 ];
-const upcoming = [{ label: "Assets", icon: Images }];
+const upcoming: { label: string; icon: typeof Images }[] = [];
 
 export function StudioLayout() {
   const { session, signOut } = useStudioAuth();

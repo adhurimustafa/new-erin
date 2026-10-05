@@ -8,6 +8,7 @@ import { LANGUAGES, SECTORS, formatDate, useBriefs, useClients, useCreateBriefDr
 import { ProjectForm } from "../components/ProjectForm";
 import { ConfirmDelete } from "../components/ConfirmDelete";
 import { EmptyState, ErrorLine, Loading, StatusBadge } from "../components/Bits";
+import { AssetLibrary } from "../components/AssetLibrary";
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -35,11 +36,14 @@ export default function ProjectDetail() {
         </div>
         <div className="studio-actions">
           <Button variant="outline" onClick={() => setEditing(true)}><Pencil aria-hidden="true" />Modifier</Button>
-          <ConfirmDelete name={project.name} label="ce projet" busy={del.isPending}
+          <ConfirmDelete name={project.name} label="ce projet, ses briefs et tous ses fichiers" busy={del.isPending}
             onConfirm={() => del.mutate(project.id, { onSuccess: () => { toast.success("Projet supprimé."); nav(`/studio/clients/${project.client_id}`); }, onError: e => toast.error(e.message) })} />
         </div>
       </header>
 
+      {project.deleting && (
+        <p className="studio-error" role="alert">Suppression de ce projet incomplète. <Button size="sm" variant="outline" disabled={del.isPending} onClick={() => del.mutate(project.id, { onSuccess: () => { toast.success("Projet supprimé."); nav(`/studio/clients/${project.client_id}`); }, onError: e => toast.error(e.message) })}>Relancer la suppression</Button></p>
+      )}
       <section className="studio-panel" aria-label="Informations du projet">
         <dl className="studio-dl studio-dl-cols">
           <div><dt>Statut</dt><dd><StatusBadge status={project.status} />{project.status === "published" && <p className="studio-help">Statut de gestion : aucune publication technique n’est effectuée par le Studio.</p>}</dd></div>
@@ -74,6 +78,8 @@ export default function ProjectDetail() {
           </ul>
         ) : <EmptyState title="Aucun brief" text="Le brief rassemble les informations nécessaires à la création du site." />}
       </section>
+
+      <AssetLibrary projectId={project.id} locked={project.deleting} />
 
       <section className="studio-panel" aria-labelledby="desc">
         <h2 id="desc" className="studio-h2">Description</h2>

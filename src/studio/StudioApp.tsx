@@ -11,6 +11,7 @@ import ProjectDetail from "./pages/ProjectDetail";
 import NewSite from "./pages/NewSite";
 import BriefWizard from "./pages/BriefWizard";
 import Assets from "./pages/Assets";
+import StructurePage from "./structure/StructurePage";
 import "./studio.css";
 
 export default function StudioApp() {

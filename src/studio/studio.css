@@ -216,3 +216,4 @@ fieldset.studio-field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .structure-needs { margin: .4rem 0 0; padding-left: 1.1rem; font-size: .85rem; color: hsl(var(--muted-foreground)); display: flex; flex-direction: column; gap: .2rem; overflow-wrap: anywhere; }
 .structure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1rem; }
 .structure-bar { position: sticky; bottom: .75rem; z-index: 5; justify-content: flex-end; flex-wrap: wrap; padding: .75rem; border: 1px solid hsl(var(--border)); border-radius: .9rem; background: hsl(var(--background) / .92); backdrop-filter: blur(8px); }
+.studio-h3 { font-size: 1rem; font-weight: 600; margin: .75rem 0 .25rem; }

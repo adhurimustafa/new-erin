@@ -37,6 +37,8 @@ Validé le 5 octobre 2026. Rien n'est publié ; le Lot 5 n'est pas commencé.
 
 ## Avertissements de contrôle du code restants (volontaires)
 
+Ces deux avertissements proviennent du **scan de sécurité** (distinct des avertissements lint, détaillés dans `lot5-structure.md`) :
+
 - Fonctions de rôle (security definer) signalées par le scan — choix assumé du Lot 1.
 - Liste d'autorisation admin fermée signalée par le scan — choix assumé.
 - Aucun nettoyage ni refonte lancé sur ces points.

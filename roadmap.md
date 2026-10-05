@@ -38,7 +38,7 @@
 - [x] Suppressions fiables (fichier, projet), nettoyage à l'ouverture
 - [x] Tests serveur, navigateur, responsive ; données de test supprimées
 
-## Studio — Lot 5 (Structure recommandée) — livré, en attente de validation
+## Studio — Lot 5 (Structure recommandée) — validé
 
 - [x] Règles par secteur (Restaurant, Artisan/BTP détaillés ; autres secteurs courts ; socle commun)
 - [x] Proposition liée à la version exacte du brief validé, relevé figé des fichiers prêts

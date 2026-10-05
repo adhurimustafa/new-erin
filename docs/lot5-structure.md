@@ -20,6 +20,12 @@
 - Navigateur : générer, ajuster, enregistrer, recharger, recalculer (confirmation + archivage), valider, recalculer après validation ; 360/390/768/1440 sans débordement ; aucune erreur console ; vitrine inchangée.
 
 ## Limites
-- La proposition est calculée dans le navigateur puis contrôlée par le serveur (format, relevé de fichiers, périmètre) ; le serveur ne recalcule pas les règles lui-même.
+- **Limite acceptée (à réévaluer avant toute génération ou publication) :** la proposition est calculée dans le navigateur puis contrôlée par le serveur (accès, format, références de fichiers, périmètre des ajustements) ; le serveur ne recalcule pas les règles métier lui-même et ne garantit donc pas que la proposition initiale correspond exactement aux règles de `rules.ts`. Acceptée pour la recommandation interne ; à réévaluer avant toute génération de site ou publication fondée sur cette structure.
 - Studio en français uniquement ; pas de récupération de mot de passe.
-- Contrôle du code : 11 avertissements mineurs préexistants, 0 erreur.
+
+## Avertissements du contrôle du code (lint)
+11 avertissements, 0 erreur. Tous relèvent de la même règle `react-refresh/only-export-components` (un fichier exporte un composant et une constante/fonction : seul le rechargement à chaud en développement est concerné, aucun défaut fonctionnel).
+- Antérieurs au Lot 5 (10) : `src/components/ui/badge.tsx`, `button.tsx`, `form.tsx`, `navigation-menu.tsx`, `sidebar.tsx`, `sonner.tsx`, `toggle.tsx`, `src/i18n.tsx` (2), `src/studio/auth.tsx`, `src/studio/brief/BriefProgress.tsx`.
+- Introduits par le Lot 5 : **aucun** (les fichiers `src/studio/structure/*` ne génèrent aucun avertissement).
+- Aucun nettoyage ni refonte lancé sur ces points.
+- Note : les « deux avertissements » du bilan Lot 4 concernaient le **scan de sécurité** (fonctions de rôle security definer, liste d'autorisation admin fermée — choix assumés), pas le lint ; les deux comptages coexistent sans contradiction.
